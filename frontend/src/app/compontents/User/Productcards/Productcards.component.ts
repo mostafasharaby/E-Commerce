@@ -52,11 +52,11 @@ export class ProductcardsComponent implements OnInit {
     private sortingService: SortingService,
     private priceFilterService: PriceFilterService) { }
 
-    type: string = '';
+  type: string = '';
   categoryItems: any;
   ngOnInit(): void {
 
-  
+
     this.staticService.selectedType$.subscribe((type) => {
       this.type = type;
       console.log("typppppe ", this.type);
@@ -81,8 +81,6 @@ export class ProductcardsComponent implements OnInit {
         this.sortOrder = order;
         this.sortProductsByRate(order);
       }),
-
-
 
       this.staticproduct.selectedCategoryId$.subscribe(categoryId => {
         this.selectedCategoryId = categoryId;
@@ -111,8 +109,6 @@ export class ProductcardsComponent implements OnInit {
         }
       })
     )
-
-
   }
 
   ngOnDestroy(): void {
@@ -123,14 +119,14 @@ export class ProductcardsComponent implements OnInit {
   filterByPrice(event: any) {
     const priceRangeId = +event.target.value;
     let selectedRange: number[] = this.getPriceRangeById(priceRangeId);
-    if (event.target.checked) {     
+    if (event.target.checked) {
       const checkExistAfter = this.filteredCards.some(card => card.id === this.selectedCategoryId && card.type === this.type);
-      console.log("before price filter ", this.filteredCards  , this.type );
-     
-     if(this.type==='' || this.type==='all')   this.filteredCards = this.cards.filter(product => product.price >= selectedRange[0] && product.price <= selectedRange[1] ) ;
-     else  this.filteredCards = this.cards.filter(product => product.price >= selectedRange[0] && product.price <= selectedRange[1] && product.type === this.type ) ;
-     
-     console.log("after price filter ", this.filteredCards);
+      console.log("before price filter ", this.filteredCards, this.type);
+
+      if (this.type === '' || this.type === 'all') this.filteredCards = this.cards.filter(product => product.price >= selectedRange[0] && product.price <= selectedRange[1]);
+      else this.filteredCards = this.cards.filter(product => product.price >= selectedRange[0] && product.price <= selectedRange[1] && product.type === this.type);
+
+      console.log("after price filter ", this.filteredCards);
 
       //console.log(this.filteredCards.some(card => card.id === this.selectedCategoryId));
       if (this.filteredCards.length == 0) {
@@ -143,11 +139,11 @@ export class ProductcardsComponent implements OnInit {
       // Reset or remove price filter
       this.filteredCards = [...this.cards];
       this.checkExistElementsMatch = false;
-     // this.checkExistElementsMatch = this.filteredCards.length > 0; 
+      // this.checkExistElementsMatch = this.filteredCards.length > 0; 
     }
     //this.checkExistElementsMatch = this.filteredCards.length > 0;
     console.log("checked filteredCards", this.filteredCards)
-    console.log("checkExistElementsMatch " , this.checkExistElementsMatch);
+    console.log("checkExistElementsMatch ", this.checkExistElementsMatch);
   }
 
   applyFilter(event: any, type: string) {
@@ -157,35 +153,31 @@ export class ProductcardsComponent implements OnInit {
       this.filteredCards = this.cards;
       this.checkExistElementsMatch = this.filteredCards.length > 0;
     }
-
     //console.log("event changed " ,type);
   }
-
 
   getPriceRangeById(priceRangeId: number): number[] {
     const priceRanges: Record<number, number[]> = {
       1: [0, 100],
       2: [101, 500],
       3: [501, 1000],
-      4: [1001, Number.MAX_SAFE_INTEGER], // Handle "Above $1000"
+      4: [1001, Number.MAX_SAFE_INTEGER],
     };
     return priceRanges[priceRangeId] || [];
   }
-
-
 
   getCategoryItems2(title: string) {
     this.proService.getCategoryByTitle2(title).subscribe(
       (data) => {
         const categories = data.filter((cat: any) => cat.title.toLowerCase() === title.toLowerCase());
-       console.log("category: ", categories);
+        console.log("category: ", categories);
         if (categories) {
 
           this.categoryItems = categories
           this.cards = this.categoryItems;  // Assigning the fetched items to cards
           this.filteredCards = this.cards;
           this.checkExistElementsMatch = this.filteredCards.length > 0;
-           console.log("filtered cards: ", this.filteredCards  );
+          console.log("filtered cards: ", this.filteredCards);
           // this.checkExistElementsMatch = this.filteredCards.length > 0;
           //console.log("filtered length : ", this.filteredCards.length  );
           this.searchService.searchTerm$.subscribe((data) => {
@@ -205,8 +197,6 @@ export class ProductcardsComponent implements OnInit {
       }
     );
   }
-
-
 
   BuyNow(product: IProduct) {
     product.count = 1;
@@ -266,15 +256,16 @@ export class ProductcardsComponent implements OnInit {
   }
 
   sortProductsByPrice(order: string): void {
-    this.filteredCards = this.sortingService.sortByPrice(this.filteredCards, order); // Sorting products array
+    this.filteredCards = this.sortingService.sortByPrice(this.filteredCards, order);
     // console.log("sort ",order
   }
+
   sortProductsByName(order: string): void {
-    this.filteredCards = this.sortingService.sortByName(this.filteredCards, order); // Sorting products array
+    this.filteredCards = this.sortingService.sortByName(this.filteredCards, order);
   }
 
   sortProductsByRate(order: string): void {
-    this.filteredCards = this.sortingService.sortByRate(this.filteredCards, order); // Sorting products array
+    this.filteredCards = this.sortingService.sortByRate(this.filteredCards, order);
   }
 
 }

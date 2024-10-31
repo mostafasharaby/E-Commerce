@@ -77,7 +77,7 @@ export class NavbarComponent implements OnInit {
 
   search(event: any) {
     const query = this.searchItem.toLowerCase();
-    this.searchService.setSearchTerm(query);  // Update the search term in the shared service
+    this.searchService.setSearchTerm(query);  
     let checkExist = this.searchService.setSearchTerm(query) == null;
     if (checkExist) {
       console.log("no search term");

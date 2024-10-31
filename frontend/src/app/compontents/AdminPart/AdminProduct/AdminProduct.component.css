@@ -52,7 +52,7 @@ td {
   vertical-align: middle;
 }
 
-/* Buttons */
+
 button {
   transition: all 0.3s ease;
   font-weight: bold;
@@ -64,7 +64,7 @@ button:hover {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Button Styling */
+
 .bg-blue-600 {
   background-color: #3498db;
 }
@@ -185,7 +185,6 @@ button:hover {
     z-index: 1000;
   }
   
-  /* Modal Content */
   .modal-content {
     background-color: white;
     border-radius: 12px;
@@ -206,7 +205,7 @@ button:hover {
     }
   }
   
-  /* Modal Title */
+
   .modal-title {
     font-size: 1.5rem;
     font-weight: bold;
@@ -215,15 +214,14 @@ button:hover {
     color: #333;
   }
   
-  /* Modal Message */
+
   .modal-message {
     font-size: 1rem;
     margin-bottom: 20px;
     text-align: center;
     color: #555;
   }
-  
-  /* Modal Actions (Buttons) */
+ 
   .modal-actions {
     display: flex;
     justify-content: space-between;

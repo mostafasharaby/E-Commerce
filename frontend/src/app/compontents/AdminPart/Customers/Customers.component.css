@@ -1,4 +1,4 @@
-/* Overall Table Styling */
+
 table {
     border-collapse: collapse;
     width: 100%;
@@ -6,25 +6,25 @@ table {
   
 
   
-  /* Body Styling */
+
   tbody {
-    background-color: #f8f8f8; /* Light background for better contrast */
+    background-color: #f8f8f8; 
   }
 
   
   tr:hover {
-    background-color: #e2e2e2; /* Light grey on hover */
+    background-color: #e2e2e2;
   }
   
-  /* Table Cell Styling */
+
   td {
     padding: 12px 15px;
-    border-bottom: 1px solid #dddddd; /* Subtle borders */
+    border-bottom: 1px solid #dddddd; 
   }
   
-  /* Action Button Styling */
+
   button {
-    background-color: #e74c3c; /* Bright red */
+    background-color: #e74c3c;
     color: white;
     border: none;
     border-radius: 5px;
@@ -34,18 +34,18 @@ table {
   }
   
   button:hover {
-    background-color: #c0392b; /* Darker red on hover */
-    transform: translateY(-2px); /* Slight lift on hover */
+    background-color: #c0392b; 
+    transform: translateY(-2px); 
   }
   
   button:focus {
-    outline: none; /* Remove outline */
+    outline: none;
   }
   
-  /* Responsive Styling */
+
   @media (max-width: 768px) {
     th, td {
-      padding: 10px; /* Slightly smaller padding on small screens */
+      padding: 10px; 
     }
   }
   

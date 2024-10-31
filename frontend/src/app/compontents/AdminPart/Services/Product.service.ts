@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IProduct } from '../../../Models/IProduct';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  private apiUrl = 'http://localhost:5004/api/Product/GetProductsWithRatings';
-  private apdateUrl = 'http://localhost:5004/api/Product'
+  private apiUrl =  `${environment.api}/Product/GetProductsWithRatings`;
+  private apdateUrl = `${environment.api}/Product`
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };

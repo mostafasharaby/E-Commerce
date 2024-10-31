@@ -77,7 +77,7 @@ export class AdminProductComponent implements OnInit {
     );
   }
 
-  showConfirmationModal: boolean = false;  // Control the visibility of the modal
+  showConfirmationModal: boolean = false;  
   confirmDeleteId: number | null = null; 
   confirmDelete(productId: number) {
     
@@ -86,7 +86,7 @@ export class AdminProductComponent implements OnInit {
     this.showConfirmationModal = true;
   }
 
-  // Close the confirmation modal
+
   closeConfirmationModal() {
     this.showConfirmationModal = false;
     this.confirmDeleteId = null;

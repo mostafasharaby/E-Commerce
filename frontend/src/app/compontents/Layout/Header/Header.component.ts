@@ -16,8 +16,7 @@ export class HeaderComponent implements OnInit {
    // this.isLoggedOut= true;
    this.router.navigate(['/Login']);
   }
- 
- 
+  
   cancelLogout(): void {
     console.log('Logout cancelled.');   
     this.router.navigate(['/Home']);

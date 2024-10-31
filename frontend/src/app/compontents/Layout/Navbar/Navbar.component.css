@@ -5,9 +5,9 @@
   }
   
   .nav-link i {
-    font-size: 2rem; /* Increased icon size */
+    font-size: 2rem; 
     transition: color 0.3s ease;
-    position: relative; /* Establish relative positioning for absolute child */
+    position: relative; 
  
   }
   
@@ -19,10 +19,10 @@
     left: 50%;
     transform: translate(-50%, -50%);
     transition: opacity 0.3s ease, visibility 0.3s ease;
-    white-space: nowrap; /* Prevents the text from wrapping */
-    font-size: 0.9rem; /* Slightly smaller text size */
-    color: #ffffff; /* Text color */
-    background-color: rgba(0, 0, 0, 0.6); /* Background behind text for visibility */
+    white-space: nowrap; 
+    font-size: 0.9rem; 
+    color: #ffffff; 
+    background-color: rgba(0, 0, 0, 0.6); 
     padding: 0.1rem 0.5rem;
     border-radius: 4px;
   }
@@ -33,9 +33,9 @@
   }
   
   .nav-link:hover i {
-    color: #ffcc00; /* Optional: color change on hover */
+    color: #ffcc00; 
   }
-  /* Basic styles for the dropdown */
+
   .categories-list {
     background: #fff;
     border-right: 1px solid #ddd;
@@ -53,22 +53,22 @@
     background: #f8f9fa;
   }
 
-  /* Category content container */
+  
   .category-content {
     position: relative;
-    display: none; /* Initially hidden */
+    display: none; 
   }
 
   .category-content .content {
-    display: none; /* Hide all content by default */
+    display: none;
   }
 
-  /* Show the content on hover */
+
   .dropdown-menu:hover .category-content {
     display: block;
   }
 
-  /* Show content for a specific category on hover */
+ 
   .category-item:hover ~ .category-content #kids-content,
   .category-item:hover ~ .category-content #men-content,
   .category-item:hover ~ .category-content #women-content,
@@ -76,7 +76,7 @@
     display: block;
   }
 
-  /* Make sure only one category content appears at a time */
+
   .category-content .content:not(:hover) {
     display: none;
   }
