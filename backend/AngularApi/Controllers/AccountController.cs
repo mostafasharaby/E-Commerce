@@ -66,13 +66,7 @@ namespace AngularApi.Controllers
                     var checkpass = await userManager.CheckPasswordAsync(found, logInUser.Password);
                     if (checkpass)
                     {
-                        //  Create the claims which will be included in the JWT token.
-                        //var claim = new List<Claim>();
-                        //claim.Add(new Claim(ClaimTypes.NameIdentifier, appUser.Id));
-                        //claim.Add(new Claim(ClaimTypes.Email, appUser.Email));
-                        //// Add a claim with a unique identifier for the JWT token.
-                        //claim.Add(new Claim(System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
-
+                        //  Create the claims which will be included in the JWT token.                        
                         var claim = new List<Claim>
                         {
                             new Claim(ClaimTypes.NameIdentifier, found.Id), // User's ID
