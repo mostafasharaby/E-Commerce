@@ -1,0 +1,15 @@
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity here */
+    z-index: 1040; /* Ensure it's below the modal */
+    transition: opacity 0.15s linear;
+  }
+  
+  .modal-backdrop.show {
+    opacity: 1;
+  }
+  

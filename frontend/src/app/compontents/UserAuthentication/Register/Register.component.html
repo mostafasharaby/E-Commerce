@@ -1,0 +1,65 @@
+<section class="vh-100" style="margin-top: 5%;">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-9 col-lg-6 col-xl-5">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" class="img-fluid" alt="Sample image">
+      </div>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <form [formGroup]="register" (ngSubmit)="onRegister()" class="my-3">
+
+          <div data-mdb-input-init class="form-outline mb-3">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" class="form-control" formControlName="fullName" name="fullName" placeholder="Enter your full name" />
+            <div [hidden]="fullName?.valid || fullName?.untouched" class="error text-danger">
+              <small *ngIf="fullName?.errors?.['required']">Full Name is required.</small>
+            </div>
+            <div *ngIf="usernameTakenError" class="error text-danger">
+              <small>Username is already taken. Please choose another one.</small>
+            </div>
+          </div>
+
+          <div data-mdb-input-init class="form-outline mb-3">
+            <label for="email">Email address</label>
+            <input type="email" id="email" class="form-control" formControlName="email" name="email" placeholder="Enter your email address" />
+            <div [hidden]="email?.valid || email?.untouched" class="error text-danger">
+              <small *ngIf="email?.errors?.['required']">Email is required.</small>
+              <small *ngIf="email?.errors?.['emailNotValid']">Email already exists.</small>
+            </div>
+          </div>
+
+          <div data-mdb-input-init class="form-outline mb-3">
+            <label for="password">Password</label>
+            <input type="password" id="password" class="form-control" formControlName="password" name="password" placeholder="Enter your password" />
+            <div *ngIf="password?.invalid && password?.touched" class="error text-danger">
+              <small *ngIf="password?.errors?.['required']">Password is required.</small>
+            </div>
+          </div>
+
+          <div data-mdb-input-init class="form-outline mb-3">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" class="form-control" formControlName="confirmPassword" name="confirmPassword" placeholder="Confirm your password" />
+            <small *ngIf="confirmPassword?.errors?.['required'] && password?.touched" class="error text-danger">Confirm Password is required.</small>
+            <small *ngIf="register?.errors?.['notMatchPassword'] && register.get('confirmPassword')?.touched" class="error text-danger">Passwords do not match.</small>
+            <small *ngIf="register?.errors?.['complexPassword'] && register.get('password')?.touched" class="error text-danger">Password can't be the same as the email.</small>
+            <small *ngIf="register?.errors?.['complexPasswordWithFullName'] && register.get('password')?.touched" class="error text-danger">Password can't be the same as the full name.</small>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="form-check mb-0">
+              <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+              <label class="form-check-label" for="form2Example3">
+                Remember me
+              </label>
+            </div>
+          </div>
+
+          <div class="text-center text-lg-start mt-4 pt-2">
+            <button type="submit" class="px-4 py-3 rounded-pill btn btn-primary btn-lg" [disabled]="register.invalid">Register</button>
+            <p class="small fw-bold mt-2 pt-1 mb-0">Have already an account? <a href="#!" class="link-danger" [routerLink]="['/auth/Login']" routerLinkActive="active">Login</a></p>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

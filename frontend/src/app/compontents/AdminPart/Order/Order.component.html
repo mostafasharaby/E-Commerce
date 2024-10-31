@@ -1,0 +1,22 @@
+<div class="shadow-lg rounded-lg overflow-hidden mx-4 md:mx-10 my-4">
+  <div class="table-responsive">
+    <table class="w-full table">
+      <thead class="bg-dark text-white">
+        <tr class="bg-gray-100">
+          <th class="w-1/4 py-4 px-6 text-left text-gray-600 font-bold uppercase">Order ID</th>
+          <th class="w-1/4 py-4 px-6 text-left text-gray-600 font-bold uppercase">Customer</th>
+          <th class="w-1/4 py-4 px-6 text-left text-gray-600 font-bold uppercase">Date</th>
+          <th class="w-1/4 py-4 px-6 text-left text-gray-600 font-bold uppercase">Total</th>
+        </tr>
+      </thead>
+      <tbody class="bg-white">
+        <tr *ngFor="let order of orderDetails">
+          <td class="py-4 px-6 border-b border-gray-200">#{{ order.id }}</td>
+          <td class="py-4 px-6 border-b border-gray-200">{{ order.userName }}</td>
+          <td class="py-4 px-6 border-b border-gray-200">{{ order.createdAt }}</td>
+          <td class="py-4 px-6 border-b border-gray-200">{{ order.total | currency }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

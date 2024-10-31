@@ -1,0 +1,48 @@
+
+<div class="add-product-container">
+  <h2>Add New Product</h2>
+  <form (ngSubmit)="addProduct()">
+    <label for="name">Product Name:</label>
+    <input type="text" id="name" [(ngModel)]="product.name" name="name" required />
+
+    <label for="price">Price:</label>
+    <input type="number" id="price" [(ngModel)]="product.price" name="price" required />
+
+    <label for="prevprice">Previous Price:</label>
+    <input type="number" id="prevprice" [(ngModel)]="product.prevPrice" name="prevprice" />
+
+    <label for="prevprice">Discount:</label>
+    <input type="number" id="prevprice" [(ngModel)]="product.discount" name="prevprice" />
+
+    <label for="count">Count:</label>
+    <input type="number" id="count" [(ngModel)]="product.count" name="count" required />
+
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" [(ngModel)]="product.quantity" name="quantity" required />
+
+    <label for="categoryID">Category ID:</label>
+    <input type="number" id="categoryID" [(ngModel)]="product.categoryID" name="categoryID" required />
+
+    <label for="type">Type:</label>
+    <input type="text" id="type" [(ngModel)]="product.type" name="type" required />
+
+    <label for="type">Title:</label>
+    <input type="text" id="type" [(ngModel)]="product.title" name="type" required />
+
+    <label for="stock">Description:</label>
+    <input type="text" id="stock" [(ngModel)]="product.description" name="stock" required />
+
+    <label for="rate">Rating:</label>
+    <input type="number" step="0.1" id="rate" [(ngModel)]="product.ratings.rate" name="rate" required />
+
+    <label for="rateCount">Rating Count:</label>
+    <input type="number" id="rateCount" [(ngModel)]="product.ratings.count" name="rateCount" required />
+
+    <div class="form-group">
+      <label for="image">Upload Image:</label>
+      <input type="file" id="image" (change)="onImageChange($event)" accept="image/*" />
+    </div>
+
+    <button type="submit" class="submit-btn mt-4">Add Product</button>
+  </form>
+</div>

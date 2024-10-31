@@ -1,0 +1,123 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+  }
+  
+
+  .navbar-brand {
+    font-weight: bold;
+    color: #ffffff !important;
+  }
+  
+  .navbar-nav .nav-link {
+    font-size: 1rem;
+    color: #ffffff !important;
+  }
+  
+  .card {
+    border-radius: 0.75rem;
+    margin-bottom: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #495057;
+  }
+  
+  .card-text.display-4 {
+    font-size: 2.5rem;
+  }
+  
+  .table thead th {
+    background-color: #343a40;
+    color: white;
+  }
+  
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0,0,0,.05);
+  }
+  
+  .sidebar {
+    background-color: #ffffff;
+    border-right: 1px solid #dee2e6;
+  }
+  
+  .sidebar .nav-link {
+    color: #495057;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .sidebar .nav-link.active,
+  .sidebar .nav-link:hover {
+    background-color: #17a2b8;
+    color: #ffffff;
+  }
+  
+  .main-expanded {
+    margin-left: 80px;
+    transition: margin-left 0.3s;
+  }
+  
+  .toggle-btn {
+    background-color: #17a2b8;
+    color: #ffffff;
+    border: none;
+    width: 100%;
+    text-align: left;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.2s ease;
+  }
+  
+  .toggle-btn:hover {
+    background-color: #138496;
+  }
+  
+  .card-sales {
+    background-color: #17a2b8;
+    color: #ffffff;
+  }
+  
+  .card-orders {
+    background-color: #28a745;
+    color: #ffffff;
+  }
+  
+  .card-customers {
+    background-color: #ffc107;
+    color: #343a40;
+  }
+  
+  .card-requests {
+    background-color: #dc3545;
+    color: #ffffff;
+  }
+  
+  .icon {
+    margin-right: 10px;
+  }
+  
+  .progress {
+    height: 20px;
+    margin-bottom: 1rem;
+  }
+  
+  @media (max-width: 768px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+    }
+  }

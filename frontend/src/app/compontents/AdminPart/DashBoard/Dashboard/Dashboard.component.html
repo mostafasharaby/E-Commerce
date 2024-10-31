@@ -1,0 +1,132 @@
+
+<div class="row mb-4 pt-3 ">
+  <div class="col-md-3">
+    <div class="card shadow-sm text-center card-sales">
+      <div class="card-body">
+        <h5 class="card-title">Total Sales</h5>
+        <p class="card-text display-4">{{this.totalSales|currency}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card shadow-sm text-center card-orders">
+      <div class="card-body">
+        <h5 class="card-title">New Orders</h5>
+        <p class="card-text display-4">{{this.totalOrders}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card shadow-sm text-center card-customers">
+      <div class="card-body">
+        <h5 class="card-title">Customers</h5>
+        <p class="card-text display-4">{{this.totalCustomers}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card shadow-sm text-center card-requests">
+      <div class="card-body">
+        <h5 class="card-title">Pending Requests</h5>
+        <p class="card-text display-4">10</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-4">
+  <div class="col-md-6">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Sales Chart</h5>
+        <canvas id="salesChart"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Progress</h5>
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+        </div>
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+        </div>
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+        </div>
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-4">
+  <div class="col-md-4">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Recent Activity</h5>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Order #1234 placed</li>
+          <li class="list-group-item">Customer #567 registered</li>
+          <li class="list-group-item">Product #890 added</li>
+          <li class="list-group-item">Order #345 shipped</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Recent Orders</h5>
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th>Date</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let order of orderDetails">
+                <td>#{{ order.id }}</td>
+                <td>{{ order.userName }}</td>
+                <td>{{ order.createdAt | date:'yyyy-MM-dd' }}</td>
+                <td>{{ order.total | currency }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+<div class="row mb-4">
+  <div class="col-md-6">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Performance</h5>
+        <canvas id="performanceChart"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Notifications</h5>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">New order received</li>
+          <li class="list-group-item">Product added</li>
+          <li class="list-group-item">Customer registered</li>
+          <li class="list-group-item">Shipment delivered</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

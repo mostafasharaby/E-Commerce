@@ -1,0 +1,25 @@
+<div class="shadow-lg rounded-lg overflow-hidden mx-4 md:mx-10 my-4">
+  <div class="table-responsive">
+    <table class="w-full table">
+      <thead class="bg-dark text-white">
+        <tr class="bg-gray-100">
+          <th class="w-1/4 py-4 px-6 text-left text-gray-600 font-bold uppercase">Name</th>
+          <th class="w-1/4 py-4 px-6 text-left text-gray-600 font-bold uppercase">Email</th>
+          <th class="w-1/4 py-4 px-6 text-left text-gray-600 font-bold uppercase">Action</th>
+        </tr>
+      </thead>
+      <tbody class="bg-white">
+        <tr *ngFor="let user of users">
+          <td class="py-4 px-6 border-b border-gray-200">{{ user.userName }}</td>
+          <td class="py-4 px-6 border-b border-gray-200 truncate">{{ user.email }}</td>
+          <td class="py-4 px-6 border-b border-gray-200">
+            <button class="text-white bg-red-500 hover:bg-red-700 px-3 py-1 rounded-md transition duration-200"
+              (click)="confirmDelete(user.id!)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+export interface Product {
+    id?:number;
+    name:string;
+    price:number;
+    count:number ;
+    quantity:number;
+    categoryID:number;
+    imgUrl?:string;
+    productId?:number;
+    title?:string;
+    description?: string;
+    category?: string;
+    type: string;
+    sizes?: string[];
+    size?:string;
+    images?: string[];
+    stock?: string;
+    prevPrice?:number;
+    discount?:number;
+    totalprice?:number;
+
+  
+}

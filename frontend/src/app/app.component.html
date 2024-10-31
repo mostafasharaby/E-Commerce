@@ -1,0 +1,40 @@
+<div class=" text-center" style="background-color: #ffffff;">
+    <div  *ngIf="showHeaderAndNavbar"  class="col-12 bg-dark">
+        <app-Header></app-Header>
+    </div>
+    <div  *ngIf="showHeaderAndNavbar"  class="col-12 ">
+        <app-Navbar></app-Navbar>
+    </div>
+</div>
+
+<!-- <div style="background-color: #f8f8f8;"> -->
+    <!-- <div>                 
+        <h1>{{ title }}</h1>      
+       <input type="text" id="userInput" placeholder="User" [(ngModel)]="userInput" />        
+        <input type="text" id="messageInput" placeholder="Message" [(ngModel)]="messageInput" />
+        <button (click)="sendMessage()">Send</button>      
+        <h3>Received Messages:</h3>
+        <ul>
+          <li *ngFor="let msg of receivedMessages">{{ msg.user }}: {{ msg.message }}</li>
+        </ul>            
+      </div>
+       -->
+    <router-outlet  style="background-color: #f8f8f8;"></router-outlet>
+    <!-- <app-Login></app-Login> -->
+    <!-- <div class="row p-2">
+      <div class="col-12 col-md-2 bg-danger ">
+        <app-Sidebar></app-Sidebar>
+      </div>      
+      <div class="col-12  col-md-10 bg-secondary ">
+       <app-Content></app-Content> 
+        <app-productcards></app-productcards> -->
+    <!-- <app-parent-category></app-parent-category> -->
+    <!-- <router-outlet></router-outlet>   -->
+    <!--  </div>
+    </div> -->
+    <footer  *ngIf="showHeaderAndNavbar"  class="container-fluid p-0 text-center">
+        <div class="col-12 " >
+            <app-Footer></app-Footer>
+        </div>
+    </footer>
+<!-- <div> -->

@@ -1,0 +1,112 @@
+.nav-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-link i {
+    font-size: 2rem; /* Increased icon size */
+    transition: color 0.3s ease;
+    position: relative; /* Establish relative positioning for absolute child */
+ 
+  }
+  
+  .nav-text {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    white-space: nowrap; /* Prevents the text from wrapping */
+    font-size: 0.9rem; /* Slightly smaller text size */
+    color: #ffffff; /* Text color */
+    background-color: rgba(0, 0, 0, 0.6); /* Background behind text for visibility */
+    padding: 0.1rem 0.5rem;
+    border-radius: 4px;
+  }
+  
+  .nav-link:hover .nav-text {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .nav-link:hover i {
+    color: #ffcc00; /* Optional: color change on hover */
+  }
+  /* Basic styles for the dropdown */
+  .categories-list {
+    background: #fff;
+    border-right: 1px solid #ddd;
+    padding: 10px;
+  }
+
+  .category-item {
+    padding: 10px;
+    text-decoration: none;
+    color: #007bff;
+    display: block;
+  }
+
+  .category-item:hover {
+    background: #f8f9fa;
+  }
+
+  /* Category content container */
+  .category-content {
+    position: relative;
+    display: none; /* Initially hidden */
+  }
+
+  .category-content .content {
+    display: none; /* Hide all content by default */
+  }
+
+  /* Show the content on hover */
+  .dropdown-menu:hover .category-content {
+    display: block;
+  }
+
+  /* Show content for a specific category on hover */
+  .category-item:hover ~ .category-content #kids-content,
+  .category-item:hover ~ .category-content #men-content,
+  .category-item:hover ~ .category-content #women-content,
+  .category-item:hover ~ .category-content #accessories-content {
+    display: block;
+  }
+
+  /* Make sure only one category content appears at a time */
+  .category-content .content:not(:hover) {
+    display: none;
+  }
+
+
+  .top-nav-menu,
+.bottom-nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.top-nav-menu-item a,
+.top-nav-menu-item button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  transition: all 0.5s;
+}
+
+.bottom-nav-menu-item a:hover {
+  font-weight: 600;
+  border-bottom: 4px solid #374151;
+}
+
+.active-link {
+  font-weight: 600;
+  border-bottom: 4px solid #374151;
+}
+

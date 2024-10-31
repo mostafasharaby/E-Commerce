@@ -1,0 +1,14 @@
+<app-AdminNav></app-AdminNav>
+<div class="container-fluid">
+  <div class="row">
+    <app-AdminSidebar class="col-lg-2 col-md-2 col-12"
+      [class.sidebar-collapsed]="isSidebarClosed"
+      (toggle)="handleSidebarToggle($event)">
+    </app-AdminSidebar>
+    
+    <main class="col-lg-10 col-md-10 col-12 m-4 mx-auto"
+      [class.main-expanded]="isSidebarClosed">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

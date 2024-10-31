@@ -1,0 +1,153 @@
+<header class="mb-4">
+  <nav class="px-2 md:px-6 lg:px-10 md:py-2">
+    <div class="flex justify-between items-center pt-2 md:pt-0">
+      <a href="/logo.webp" class="flex flex-col items-center cursor-pointer">
+        <span class="text-sm font-semibold text-white bg-dark px-3 py-1 rounded  hidden md:block">
+          Mega Market
+        </span>
+      </a>
+
+      <div class="">
+        <ul class="top-nav-menu">
+          <li class="top-nav-menu-item">
+            <a class="mr-4 py-1 flex flex-col md:flex-row relative" [routerLink]="['/wishlist']">
+              <i title="Wishlist" class="fa-regular fa-heart"></i>
+              <span *ngIf=" nOfItemsInWishList > 0"
+                class="absolute -top-3 -left-1 inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-dark rounded-full">
+                {{nOfItemsInWishList}}
+              </span>
+            </a>
+
+          </li>
+          <li class="top-nav-menu-item">
+            <a class="relative mr-4 py-1 flex-col md:flex-row" [routerLink]="['/Cart']">
+              <i class="fas fa-shopping-cart " title="Shopping Cart" id="rot" (click)="Rotate()"></i>
+              <span *ngIf=" nOfItems > 0 "
+                class="absolute -top-3 -left-1 inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-dark rounded-full">
+                {{nOfItems}}
+              </span>
+            </a>
+          </li>
+          <li class="top-nav-menu-item" *ngIf="!isLoggedIn">
+            <a class="py-1 flex-col md:flex-row" [routerLink]="['/auth/Login']">
+              <i title="Login" class="fa-regular fa-user"></i>
+            </a>
+          </li>
+          <li class="top-nav-menu-item" *ngIf="isLoggedIn">
+            <button class="py-1 flex-col md:flex-row" data-bs-toggle="modal" data-bs-target="#logoutModal"
+              routerLinkActive="active">
+              <i title="Logout" class="fa-solid fa-arrow-right-from-bracket"></i>
+            </button>
+          </li>
+          <li class="top-nav-menu-item">
+            <a class="relative ml-4 py-1 flex-col md:flex-row" [routerLink]="['/Home']">
+              <i class="fas fa-home " title="Home" ></i>            
+            </a>
+          </li>
+
+          
+
+        </ul>
+      </div>
+    </div>
+    <div class="mt-6 border-b border-gray-300 hidden md:block">
+      <ul class="bottom-nav-menu text-md uppercase">
+        <li class="bottom-nav-menu-item" *ngFor="let menu of menulist">
+          <a class="px-2 py-1 transition-all duration-900" [routerLink]="[menu.path]"
+            [routerLinkActive]="['active-link']" [attr.aria-label]="menu.title+' '+'link'">
+            {{menu.title}}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="flex justify-end items-center px-1 md:px-10 w-full">
+    <div class="block md:hidden flex items-center gap-2 mr-2 cursor-pointer" (click)="openMenu()">
+      <i class="fa-sharp fa-solid fa-bars text-lg"></i>
+      
+    </div>
+
+    <div class="fixed top-0 left-0 w-[150px] z-[99] h-full drop-shadow-lg bg-white block md:hidden rounded"
+      *ngIf="isMenu">
+      <div class="h-full">
+        <button class="absolute right-4 flex items-center" (click)="closeMenu()">
+          <i class="fa-solid fa-xmark text-xl"></i>
+        </button>
+        <ul class="pt-12 flex flex-col gap-5 text-md uppercase">
+          <li class="bottom-nav-menu-item" *ngFor="let menu of menulist">
+            <a class="px-4 py-1 border-b-2 block hover:pl-12 transition-all duration-1000" [routerLink]="[menu.path]"
+              [routerLinkActive]="['active-link']" [attr.aria-label]="menu.title+' '+'link'" (click)="closeMenu()">
+              {{menu.title}}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div
+      class="relative md:mb-4 w-full md:w-[300px] transition-all duration-300 bg-transparent  focus-within:border-white rounded">
+      <form class="d-flex position-relative w-100" role="search" id="searchForm">
+        <button type="submit" class="btn position-absolute top-50 start-0 translate-middle-y">
+          <i class="fas fa-search"></i>
+        </button>
+        <input class="border text-dark-900 text-sm rounded-lg   block ps-5 w-full p-2.5" type="search" placeholder="Search for products" [(ngModel)]="searchItem"
+          (keyup)="search($event)" name="Search" id="searchInput" required>
+      </form>
+    </div>
+  </div>
+</header>
+
+<div class="modal fade" id="logoutModal" #logoutModal tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="logoutModalLabel">Logout Confirmation</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to log out?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="confirmLogout()">Logout</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 
+<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered flex items-center justify-center">
+    <div class="modal-content bg-gray-50 rounded-md w-full max-w-[300px] sm:max-w-[500px] text-center p-4 sm:p-10">
+      <div class="modal-body">
+        <div class="flex flex-col items-center justify-center">
+          <span class="mb-4 inline-flex justify-center items-center w-[62px] h-[62px] rounded-full border-4 border-yellow-50 bg-yellow-100 text-yellow-500">
+            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"></path>
+            </svg>
+          </span>
+
+          <h3 class="mb-2 text-2xl font-bold text-gray-800">
+            Sign out
+          </h3>
+          <p class="text-gray-500">
+            Are you sure you would like to sign out of your account?
+          </p>
+        </div>
+
+        <div class="modal-footer mt-6 flex justify-center gap-x-4">
+          <button type="button"
+            class="py-2.5 px-4 inline-flex justify-center items-center gap-2 rounded-md border font-medium bg-white text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm"
+            (click)="confirmLogout()">
+            Sign out
+          </button>
+          <button type="button"
+            class="py-2.5 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm"
+            data-bs-dismiss="modal">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

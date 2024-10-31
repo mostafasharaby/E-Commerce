@@ -1,0 +1,38 @@
+<!-- <div class="student-deletion">
+  <h3>Delete Student</h3>
+  <form (ngSubmit)="deleteStudent()">
+    <div class="form-group">
+      <label for="student_id">Student ID:</label>
+      <input type="number" id="student_id" [(ngModel)]="student_id" name="student_id" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-danger">Delete Student</button>
+  </form>
+</div>
+
+ -->
+
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Student ID</th>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Example rows -->
+    <tr data-student-id="1">
+      <td>1</td>
+      <td>John Doe</td>
+      <td><button class="btn btn-danger" (click)="deleteStudent(1)">Delete</button></td>
+    </tr>
+    <tr data-student-id="2">
+      <td>2</td>
+      <td>Jane Doe</td>
+      <td><button class="btn btn-danger" (click)="deleteStudent(2)">Delete</button></td>
+    </tr>
+    <!-- The row corresponding to the deleted student will be removed dynamically by SignalR -->
+  </tbody>
+</table>

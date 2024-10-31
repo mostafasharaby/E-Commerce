@@ -1,0 +1,58 @@
+.card {
+    border-radius: 0.75rem;
+    margin-bottom: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #495057;
+  }
+  
+  .card-text.display-4 {
+    font-size: 2.5rem;
+  }
+  
+  .table thead th {
+    background-color: #343a40;
+    color: white;
+  }
+  
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0,0,0,.05);
+  }
+  .progress {
+    height: 20px;
+    margin-bottom: 1rem;
+  }
+  .card-sales {
+    background-color: #17a2b8;
+    color: #ffffff;
+  }
+  
+  .card-orders {
+    background-color: #28a745;
+    color: #ffffff;
+  }
+  
+  .card-customers {
+    background-color: #ffc107;
+    color: #343a40;
+  }
+  
+  .card-requests {
+    background-color: #dc3545;
+    color: #ffffff;
+  }
+  
+  .icon {
+    margin-right: 10px;
+  }
+  
+ 

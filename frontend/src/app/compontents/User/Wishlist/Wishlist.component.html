@@ -1,0 +1,62 @@
+<div *ngIf="wishlistItems.length != 0">
+  <div class="container my-5">
+    <div class="row d-flex justify-content-center">
+      <div class="col-12 col-md-4 col-lg-3 mb-4 rounded " *ngFor="let item of wishlistItems">
+        <div class="card h-100 shadow-sm w-100">
+          <img [src]="item.product.imgUrl" (click)="routeToDetails(item.productId!)" class="img-fluid mb-3  rounded w-100 h-auto"
+            alt="{{ item.product.name }}" style="max-height: 200px;">
+          <div class="card-body ">
+            <h5 class="card-title text-2xl font-bold text-gray-900 dark:text-dark">{{ item.product.name }}</h5>
+            <p class="card-text text-1xl font-bold text-gray-900 dark:text-dark "> {{ item.product.price | currency:'USD' }}</p>
+            <div class="flex items-center mb-2">
+              <div class="flex items-center space-x-1 rtl:space-x-reverse">
+                <ng-container *ngFor="let star of [].constructor(getFilledStars(item.product.ratings.rate)); let i = index">
+                  <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor" viewBox="0 0 22 20">
+                    <path
+                      d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                  </svg>
+                </ng-container>
+
+                <ng-container *ngFor="let star of [].constructor(getEmptyStars(item.product.ratings.rate)); let i = index">
+                  <svg class="w-4 h-4 text-gray-200 dark:text-gray-600" aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                    <path
+                      d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                  </svg>
+                </ng-container>
+
+                <span
+                  class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">{{
+                  item.product.ratings.rate }}</span>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between flex-wrap">
+              <button class="btn btn-dark text-white mb-1" (click)="addToCart(item.product)">
+                <i class="fas fa-shopping-cart"></i> Add To Cart
+              </button>
+              <button class="btn btn-white text-dark border border-2 border-dark" (click)="removeFromWishlist(item.id!)">
+                <i class="fas fa-trash-alt"></i> Remove
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="wishlistItems.length == 0" class="d-flex flex-column align-items-center justify-content-center my-5"
+  style="text-align: center;">
+  <h4 class="text-danger mb-3 fw-bold">Your Wishlist is Empty</h4>
+  <img src="/Empty Wishlist.png" alt="Empty Wishlist" class="img-fluid mb-3"
+    style="max-width: 260px; height: auto; border-radius: 10px;">
+
+  <div class="text-secondary mb-4" style="font-size: 1.2rem;">
+    It looks like you haven’t added anything to your wishlist yet. Start exploring now!
+  </div>
+
+  <a [routerLink]="['/category/Men']" class="btn btn-danger btn-lg rounded-pill px-4 py-2" style="font-size: 1.1rem;">
+    Start Shopping <i class="fas fa-arrow-right ms-2"></i>
+  </a>
+</div>

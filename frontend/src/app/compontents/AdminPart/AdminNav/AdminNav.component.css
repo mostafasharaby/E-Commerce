@@ -1,0 +1,15 @@
+  
+  .navbar-brand {
+    font-weight: bold;
+    color: #ffffff !important;
+  }
+  
+  .navbar-nav .nav-link {
+    font-size: 1rem;
+    color: #ffffff ;
+  }
+  .nav-link {
+    display: block; /* Ensure they are displayed */
+    opacity: 1; /* Ensure they are visible */
+  }
+  

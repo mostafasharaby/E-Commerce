@@ -1,0 +1,71 @@
+<section class="row col-12 mx-auto d-flex justify-content-center mb-5" *ngIf="checkExistElementsMatch || searchResult">
+  <div class="col-12">
+    <div class="container">
+      <div class="row ">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-4 mb-3" *ngFor="let card of filteredCards"
+          [class.d-none]="selectedCategoryId != 0 && selectedCategoryId != card.categoryID">
+          <div class="card h-100 position-relative">
+            <div class="img-wrapper">
+              <img [src]="card.imgUrl" (click)="routeToDetails(card.productId)" title="click to see details"
+                class="card-img-top w-100 w-sm-auto" style="object-fit: cover; max-height: 200px; cursor: pointer;"
+                alt="{{ card.name }}">
+            </div>
+            <div class="position-absolute top-0 end-0 p-2" (click)="addToWishList(card)">
+              <i class="fas fa-heart text-white" style="cursor: pointer;" aria-hidden="true"></i>
+            </div>
+            <div class="card-body">
+              <div class="card-title  text-1xl font-bold text-gray-900 dark:text-dark ">{{ card.name }}</div>
+              <!-- <p class="card-text  text-3xl font-bold text-gray-900 dark:text-dark ">{{ card.price | currency:'USD' }}</p> -->
+              <div class="mt-1  flex items-center justify-between flex-wrap">
+                <div>
+                  <span class="text-1xl font-bold text-slate-900 me-1">${{card.price}}</span>
+                  <span class="text-1xl text-slate-900 line-through">${{card.prevPrice}} </span>
+
+                </div>
+                <div>
+                  <span
+                    class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">Up
+                    to %{{
+                    card.discount }} off</span>
+                </div>
+              </div>
+              <div class="flex items-center mb-2">
+                <div class="flex items-center space-x-1 rtl:space-x-reverse flex-wrap">
+                  <ng-container *ngFor="let star of [].constructor(getFilledStars(card.ratings?.rate)); let i = index">
+                    <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor" viewBox="0 0 22 20">
+                      <path
+                        d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                    </svg>
+                  </ng-container>
+
+                  <ng-container *ngFor="let star of [].constructor(getEmptyStars(card.ratings?.rate)); let i = index">
+                    <svg class="w-4 h-4 text-gray-200 dark:text-gray-600" aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                      <path
+                        d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                    </svg>
+                  </ng-container>
+
+                  <span
+                    class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">{{
+                    card.ratings?.rate }}</span>
+                  <span class="text-xs  ">({{card.ratings?.count}}) </span>
+                </div>
+              </div>
+              <button class="btn btn-outline-primary w-100" (click)="BuyNow(card)">
+                <i class="fas fa-shopping-cart"></i> Add To Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section *ngIf="!checkExistElementsMatch  || !searchResult">
+  <div class="d-flex justify-content-center  align-items-center">
+    <!-- <div class="fs-4"> Sorry, There is no product available.</div> -->
+    <img src="/NotFound.png" title="No Product available">
+  </div>
+</section>

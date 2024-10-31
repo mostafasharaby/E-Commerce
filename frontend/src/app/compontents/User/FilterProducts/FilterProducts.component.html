@@ -1,0 +1,76 @@
+<div class="bg-white h-full md:h-full lg:h-150 p-3 md:mr-6 overflow-auto rounded border border-dark-2">
+  <div class="text-md font-semibold text-right flex justify-around md:text-left mb-3">
+    <button class="static left-2 flex items-center block md:hidden" (click)="onClose()">
+      <i class="fa-solid fa-xmark text-xl"></i>
+    </button>
+    <span>
+      <i class="fa-solid fa-filter text-gray-700"></i>
+      Filter & Sort
+    </span>
+  </div>
+
+  <div class="dropdown mb-3">
+    <button class="btn btn-white border border-dark-2 dropdown-toggle" type="button" id="dropdownMenuButton"
+      data-bs-toggle="dropdown" aria-expanded="false">
+      Sort by {{ selectedSortOption }}
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <li><a class="dropdown-item" (click)="sortProductsByPrice('asc')">Price: low to high</a></li>
+      <li><a class="dropdown-item" (click)="sortProductsByPrice('desc')">Price: high to low</a></li>
+      <li><a class="dropdown-item" (click)="sortProductsByRate('asc')">Rate: low to high</a></li>
+      <li><a class="dropdown-item" (click)="sortProductsByRate('desc')">Rate: high to low</a></li>
+      <li><a class="dropdown-item" (click)="sortProductsByName('asc')">A-Z</a></li>
+      <li><a class="dropdown-item" (click)="sortProductsByName('desc')">Z-A</a></li>
+    </ul>
+  </div>
+
+  <div class="border-y border-gray-300 rounded mb-5">
+    <div class="text-sm font-semibold uppercase ml-3 py-3">Types</div>
+
+    <div class="flex items-center pl-4 rounded dark:border-gray-700">
+      <input id="category-all" type="checkbox" [value]="0" [checked]="allSelected"
+        (change)="onCategorySelect2($event, 'all')"
+        
+        class="w-5 h-5 accent-gray-700 bg-gray-100 border-gray-300 rounded" />
+      <label for="category-all" class="w-full py-2 ml-2 text-sm font-semibold text-gray-900 dark:text-gray-500">
+        All Products
+      </label>
+    </div>
+
+    <div *ngFor="let cat of filteredCategoryList">
+      <div class="flex items-center pl-4 rounded dark:border-gray-700">
+        <input id="category-{{ cat.categoryID }}" type="checkbox" [value]="cat.categoryID"
+          [checked]="selectedCategory === cat.categoryID" (change)="onCategorySelect2($event, 'category')"
+          class="w-5 h-5 accent-gray-700 bg-gray-100 border-gray-300 rounded" />
+        <label for="category-{{ cat.categoryID }}"
+          class="w-full py-2 ml-2 text-sm font-semibold text-gray-900 dark:text-gray-500">
+          {{ cat.name }}
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-y border-gray-300 rounded mb-5">
+    <div class="text-sm font-semibold uppercase ml-3 py-3">Prices</div>
+    <div class="flex items-center pl-4 rounded dark:border-gray-700">
+      <input id="price-all" type="checkbox" [value]="0" [checked]="selectedPrice === 0"
+        (change)="onPriceSelect($event, 'all')" class="w-5 h-5 accent-gray-700 bg-gray-100 border-gray-300 rounded" />
+      <label for="price-all" class="w-full py-2 ml-2 text-sm font-semibold text-gray-900 dark:text-gray-500">
+        All Prices
+      </label>
+    </div>
+
+   
+    <div *ngFor="let price of priceList">
+      <div class="flex items-center pl-4 rounded dark:border-gray-700">
+        <input id="price-{{ price.rangeID }}" type="checkbox" [value]="price.rangeID"
+          [checked]="selectedPrice === price.rangeID" (change)="onPriceSelect($event, 'price')"
+          class="w-5 h-5 accent-gray-700 bg-gray-100 border-gray-300 rounded" />
+        <label for="price-{{ price.rangeID }}"
+          class="w-full py-2 ml-2 text-sm font-semibold text-gray-900 dark:text-gray-500">
+          {{ price.rangeLabel }}
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
