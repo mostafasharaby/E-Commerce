@@ -17,7 +17,7 @@ import { DeliveryComponent } from '../compontents/User/Delivery/Delivery.compone
 
 const routes: Routes = [  
 
-  {path:'productList', component: ProductlistComponent},  
+ // {path:'productList', component: ProductlistComponent},  
   {path:'productCards', component: ProductcardsComponent},
   {path:'productDetails/:productId', component: ProductDetailsComponent},
   {path:'Cart', component: CartComponent},
@@ -40,7 +40,7 @@ const routes: Routes = [
   declarations: [
     ProductDetailsComponent,
     ProductcardsComponent,
-    ProductlistComponent,
+   // ProductlistComponent,
     CartComponent,
     CheckoutComponent,
     FinishPaymentComponent,

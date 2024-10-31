@@ -20,7 +20,7 @@
         <input type="email" id="email" formControlName="email" 
           class="block w-full rounded-lg border p-2.5 text-sm bg-gray-50"
           [ngClass]="{'border-red-500': email?.touched && email?.invalid, 'border-gray-300': !email?.touched || email?.valid}"
-          placeholder="name@flowbite.com" />
+          placeholder="name@gmail.com" />
         <div *ngIf="email?.invalid && email?.touched">
           <small *ngIf="email?.errors?.['required']" class="text-red-500">Email is required.</small>
           <small *ngIf="email?.errors?.['email']" class="text-red-500">Invalid email format.</small>

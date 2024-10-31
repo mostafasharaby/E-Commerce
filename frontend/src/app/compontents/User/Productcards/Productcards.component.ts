@@ -17,6 +17,7 @@ import { PriceFilterService } from '../../../Services/PriceFilter/PriceFilter.se
   templateUrl: './Productcards.component.html',
   styleUrls: ['./Productcards.component.css']
 })
+//npm install json-server   npx json-server db.json
 export class ProductcardsComponent implements OnInit {
   productId: number = 0;
   cards !: IProduct[];
@@ -275,11 +276,5 @@ export class ProductcardsComponent implements OnInit {
   sortProductsByRate(order: string): void {
     this.filteredCards = this.sortingService.sortByRate(this.filteredCards, order); // Sorting products array
   }
-
-
-  // sortProducts(): void {
-  //   this.cards = this.sortingService.sortByPrice(this.cards, this.sortOrder);
-  // }
-
 
 }

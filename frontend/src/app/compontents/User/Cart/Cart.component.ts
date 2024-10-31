@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { ProductlistComponent } from '../Productlist/Productlist.component';
-import { Cart, cartViewModel, IProduct } from '../../../Models/IProduct';
+import { Cart, IProduct } from '../../../Models/IProduct';
 import { CartService } from '../../../Services/Cart/Cart.service';
 import { Subscription } from 'rxjs';
 import { Route, Router } from '@angular/router';
@@ -21,7 +20,6 @@ export class CartComponent implements OnInit, OnDestroy {
   cartSubscription !: Subscription;
   delivery: number = 0;
   totalDelivery: number = 0;
-  @ViewChild(ProductlistComponent) getListOfChild!: ProductlistComponent;
   constructor(private cartService: CartService,
     private router: Router,
     private totalService: SendTotalToPaymentService
@@ -32,19 +30,14 @@ export class CartComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
-    // this.cartService.cartItems$.subscribe(items => {
-    //   this.recivedCartofProductlist = items;
-    //   this.totalDelivery = this.delivery * this.recivedCartofProductlist.length;
-    //   this.orderTotalPrice = items.reduce((total, item) => (total + item.price * item.count) + this.totalDelivery, 0);
-    // });
-    // this.totalService.sendTotalPrice(this.orderTotalPrice);
+   
     this.cartSubscription = this.cartService.getCartItems().subscribe({
       next: (items: Cart[]) => {
-        console.log("Raw items received: ", items); // Log the raw items
+        console.log("Raw items received: ", items); 
         this.recivedCartofProductlist = items.map(item => {
           item.products.totalprice = item.products.price;
           item.products.count = 1;
-          console.log("Current item: ", item); // Log current item being processed
+          console.log("Current item: ", item); 
           return item.products;
         });
         console.log("recivedCartofProductlist  ", this.recivedCartofProductlist);
