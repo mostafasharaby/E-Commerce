@@ -21,14 +21,14 @@ namespace AngularApi.Controllers
             _context = context;
         }
 
-        // GET: api/Deliveries
+       
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Delivery>>> GetDelivery()
         {
             return await _context.Delivery.ToListAsync();
         }
 
-        // GET: api/Deliveries/5
+       
         [HttpGet("{id}")]
         public async Task<ActionResult<Delivery>> GetDelivery(string id)
         {
@@ -111,7 +111,7 @@ namespace AngularApi.Controllers
             return CreatedAtAction("GetDelivery", new { id = delivery.DeliveryId }, delivery);
         }
 
-        // DELETE: api/Deliveries/5
+        
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteDelivery(string id)
         {

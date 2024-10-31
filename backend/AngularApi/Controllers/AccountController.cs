@@ -120,48 +120,7 @@ namespace AngularApi.Controllers
                 return Unauthorized();
             }
             return BadRequest(ModelState);
-        }
-
-        //[HttpPost("login")]
-        //public async Task<IActionResult> Login(LogInUserDTO logInUser)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        // Find the user by email
-        //        var found = await userManager.FindByEmailAsync(logInUser.Email);
-        //        if (found != null)
-        //        {
-        //            // Check if the password is correct
-        //            var checkpass = await userManager.CheckPasswordAsync(found, logInUser.Password);
-        //            if (checkpass)
-        //            {
-        //                // Create the claims to include in the JWT token.
-        //                var claims = new List<Claim>
-        //                {
-        //                    new Claim(ClaimTypes.NameIdentifier, found.Id), // User's ID
-        //                    new Claim(ClaimTypes.Email, found.Email),
-        //                    new Claim(System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()) // Unique identifier for JWT
-        //                };
-        //                Console.WriteLine(found.Id);
-        //                // Generate the JWT token (this is an example, adapt it to your code)
-        //                var token = "GeneratedToken"; // Replace with actual token generation
-
-        //                // Return the token and user details as part of the response
-        //                return Ok(new { token, user = new { userId = found.Id, email = found.Email } });
-        //            }
-        //            else
-        //            {
-        //                return Unauthorized("Invalid credentials.");
-        //            }
-        //        }
-        //        else
-        //        {
-        //            return NotFound("User not found.");
-        //        }
-        //    }
-        //    return BadRequest("Invalid request.");
-        //}
-
+        }      
 
     }
 

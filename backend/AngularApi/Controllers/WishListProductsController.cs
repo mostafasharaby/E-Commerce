@@ -22,7 +22,7 @@ namespace AngularApi.Controllers
             _context = context;
         }
 
-        // GET: api/WishListProducts
+        
         [HttpGet]
         public async Task<ActionResult<IEnumerable<WishListProducts>>> GetWishListProducts()
         {

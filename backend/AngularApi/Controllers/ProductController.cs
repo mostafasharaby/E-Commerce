@@ -89,18 +89,7 @@ namespace AngularApi.Controllers
         {
             Repository.Delete(id);
             return StatusCode(statusCode: 204);
-        }
-
-        //[HttpGet("cat/{id}")]
-        //public IActionResult GEtProductsWithCategory(int id)
-        //{
-        //    var prowithcat = Context.Products.Include(i => i.CategoryIIDD).FirstOrDefault(i => i.Id == id);
-        //    Productwithcategory productwithcategory = new Productwithcategory();
-        //    productwithcategory.Id = prowithcat.Id;
-        //    productwithcategory.Name = prowithcat.Name;
-        //    productwithcategory.CategoryName = prowithcat.CategoryIIDD.CategoryName;
-        //    return Ok(productwithcategory);
-        //}
+        }        
 
         [HttpPatch("{id}")]
         public IActionResult UpdateSomeAtrribute([FromRoute] int id, [FromBody] Product product)

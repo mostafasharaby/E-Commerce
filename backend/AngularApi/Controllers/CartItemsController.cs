@@ -22,7 +22,7 @@ namespace AngularApi.Controllers
             _context = context;
         }
 
-        // GET: api/CartItems
+     
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CartItem>>> GetCartItems()
         {

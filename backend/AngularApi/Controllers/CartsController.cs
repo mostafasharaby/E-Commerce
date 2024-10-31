@@ -14,7 +14,6 @@ namespace AngularApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-   // [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 
     public class CartsController : ControllerBase
     {
@@ -25,7 +24,7 @@ namespace AngularApi.Controllers
             _context = context;
         }
 
-        // GET: api/Carts
+        
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Cart>>> GetCart()
         {
@@ -86,7 +85,7 @@ namespace AngularApi.Controllers
         }
 
 
-        // GET: api/Carts/5
+        
         [HttpGet("{id}")]
         public async Task<ActionResult<Cart>> GetCart(int id)
         {
@@ -135,8 +134,6 @@ namespace AngularApi.Controllers
         }
 
 
-        // PUT: api/Carts/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCart(int id, Cart cart)
         {
@@ -166,8 +163,7 @@ namespace AngularApi.Controllers
             return NoContent();
         }
 
-        // POST: api/Carts
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        
         [HttpPost]
         public async Task<ActionResult<Cart>> PostCart(Cart cart)
         {
@@ -186,7 +182,7 @@ namespace AngularApi.Controllers
             return CreatedAtAction("GetCart", new { id = cart.Id }, cart);
         }
 
-        // DELETE: api/Carts/5
+        
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCart(int id)
         {

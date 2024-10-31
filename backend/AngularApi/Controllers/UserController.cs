@@ -18,7 +18,7 @@ namespace AngularApi.Controllers
             _userManager = userManager;
         }
 
-        // GET: api/users
+        
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
@@ -26,7 +26,7 @@ namespace AngularApi.Controllers
             return Ok(users);
         }
 
-        // GET: api/users/{id}
+        
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(string id)
         {
@@ -38,7 +38,7 @@ namespace AngularApi.Controllers
             return Ok(user);
         }
 
-        // POST: api/users
+        
         [HttpPost]
         public async Task<ActionResult<User>> CreateUser([FromBody] User user)
         {
@@ -67,7 +67,7 @@ namespace AngularApi.Controllers
 
             existingUser.AddressLine1 = user.AddressLine1;
             existingUser.City = user.City;
-            // Update other properties as needed
+           
 
             var result = await _userManager.UpdateAsync(existingUser);
             if (result.Succeeded)
@@ -77,7 +77,7 @@ namespace AngularApi.Controllers
             return BadRequest(result.Errors);
         }
 
-        // DELETE: api/users/{id}
+       
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(string id)
         {

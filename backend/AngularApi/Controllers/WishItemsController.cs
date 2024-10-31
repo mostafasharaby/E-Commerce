@@ -21,13 +21,7 @@ namespace AngularApi.Controllers
         {
             _context = context;
         }
-
-        // GET: api/WishItems
-        //[HttpGet]
-        //public async Task<ActionResult<IEnumerable<WishItems>>> GetWishItems()
-        //{
-        //    return await _context.WishItems.ToListAsync();
-        //}
+       
 
         [HttpGet("WishItems")]
         public async Task<ActionResult<IEnumerable<WishItems>>> GetWishListWithProducts()
@@ -69,19 +63,7 @@ namespace AngularApi.Controllers
         }
 
 
-        // GET: api/WishItems/5
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<WishItems>> GetWishItems(int id)
-        //{
-        //    var wishItems = await _context.WishItems.FindAsync(id);
-
-        //    if (wishItems == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return wishItems;
-        //}
+       
         [HttpGet("{id}")]
         public async Task<ActionResult<WishItems>> GetCart(int id)
         {
@@ -128,8 +110,7 @@ namespace AngularApi.Controllers
         }
 
 
-        // PUT: api/WishItems/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        
         [HttpPut("{id}")]
         public async Task<IActionResult> PutWishItems(int id, WishItems wishItems)
         {
@@ -159,8 +140,7 @@ namespace AngularApi.Controllers
             return NoContent();
         }
 
-        // POST: api/WishItems
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+      
         [HttpPost("WishItems")]
         public async Task<ActionResult<WishItems>> PostWishItems(WishItems wishItems)
         {
@@ -181,7 +161,7 @@ namespace AngularApi.Controllers
             return CreatedAtAction("GetWishListWithProducts", new { id = wishItems.Id }, wishItems);
         }
 
-        // DELETE: api/WishItems/5
+        
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteWishItems(int id)
         {

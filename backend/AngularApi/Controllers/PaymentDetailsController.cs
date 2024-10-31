@@ -20,14 +20,14 @@ namespace AngularApi.Controllers
             _context = context;
         }
 
-        // GET: api/PaymentDetails
+        
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PaymentDetails>>> GetPaymentDetails()
         {
             return await _context.PaymentDetails.ToListAsync();
         }
 
-        // GET: api/PaymentDetails/5
+        
         [HttpGet("{id}")]
         public async Task<ActionResult<PaymentDetails>> GetPaymentDetails(int id)
         {
@@ -71,8 +71,7 @@ namespace AngularApi.Controllers
             return NoContent();
         }
 
-        // POST: api/PaymentDetails
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        
         [HttpPost]
         public async Task<ActionResult<PaymentDetails>> PostPaymentDetails(PaymentDetails paymentDetails)
         {
@@ -82,7 +81,7 @@ namespace AngularApi.Controllers
             return CreatedAtAction("GetPaymentDetails", new { id = paymentDetails.Id }, paymentDetails);
         }
 
-        // DELETE: api/PaymentDetails/5
+        
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePaymentDetails(int id)
         {

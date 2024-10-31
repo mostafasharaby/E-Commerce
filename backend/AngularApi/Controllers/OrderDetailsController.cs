@@ -15,7 +15,7 @@ namespace AngularApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+   
     public class OrderDetailsController : ControllerBase
     {
         private readonly AngularDbContext _context;
@@ -25,11 +25,7 @@ namespace AngularApi.Controllers
             _context = context;
         }
 
-        //[HttpGet]
-        //public async Task<ActionResult<IEnumerable<OrderDetails>>> GetOrderDetails()
-        //{
-        //    return await _context.OrderDetails.ToListAsync();
-        //}
+        
         [HttpGet]
         public async Task<ActionResult<IEnumerable<OrderDetailsDTO>>> GetOrderDetails()
         {
@@ -100,112 +96,7 @@ namespace AngularApi.Controllers
         }
 
        
-        /// <summary>
-        // {
-        //  "orderid":39,
-        //  "total":2024,
-        //  "paymentDetails":null,
-        //  "orderItems": null
-        // }
-        /// </summary>
-        /// <param name="orderDetails"></param>
-        /// <returns></returns>
-
-        //[HttpPost]
-        //    public async Task<ActionResult<OrderDetails>> PostOrderDetails(OrderDetails orderDetails)
-        //    {
-        //        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Get logged-in user Id
-        //        if (string.IsNullOrEmpty(userId))
-        //        {
-        //            return BadRequest("User is not authenticated.");
-        //        }
-        //        if (orderDetails.PaymentId == null)
-        //        {
-        //            var paymentDetails = new PaymentDetails
-        //            {
-        //                Amount = orderDetails.Total,
-        //                Status = "Pending", // Initial status
-        //                CreatedAt = DateTime.Now,
-        //                OrderId = orderDetails.Id
-        //            };
-
-        //            _context.PaymentDetails.Add(paymentDetails);
-        //            await _context.SaveChangesAsync();
-        //            orderDetails.PaymentId = paymentDetails.Id;
-        //        }
-
-        //        orderDetails.CreatedAt = DateTime.Now;
-        //        orderDetails.UserId = userId;
-
-        //       // Console.WriteLine("Received Order Details:", orderDetails); 
-
-        //        _context.OrderDetails.Add(orderDetails);
-        //        await _context.SaveChangesAsync();
-
-        //        return CreatedAtAction("GetOrderDetails", new { id = orderDetails.Id }, orderDetails);
-        //    }
-
-        //[HttpPost]
-        //public async Task<IActionResult> CreateOrder([FromBody] OrderDetails orderDetails)
-        //{
-        //    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); 
-        //    if (string.IsNullOrEmpty(userId))
-        //    {
-        //        return BadRequest("User is not authenticated.");
-        //    }
-        //    orderDetails.CreatedAt = DateTime.Now;
-        //    orderDetails.UserId = userId;
-
-        //    if (orderDetails == null)
-        //    {
-        //        return BadRequest("Order details are required");
-        //    }         
-        //    _context.OrderDetails.Add(orderDetails);
-        //    await _context.SaveChangesAsync();  
-
-        //    var paymentDetails = new PaymentDetails
-        //    {
-        //        Amount = orderDetails.Total,
-        //        Status = "Pending",  
-        //        CreatedAt = DateTime.Now,
-        //        OrderId = orderDetails.Id  
-        //    };
-
-
-        //    _context.PaymentDetails.Add(paymentDetails);
-        //    await _context.SaveChangesAsync();  
-
-        //    orderDetails.PaymentId = paymentDetails.Id;
-        //    orderDetails.CreatedAt = DateTime.Now;
-        //    _context.OrderDetails.Update(orderDetails);
-        //    await _context.SaveChangesAsync();  
-
-        //    return Ok(orderDetails);
-        //}
-
-        //[HttpPost("PostDto")]
-        //public async Task<ActionResult<OrderDetails>> CreateOrder(OrderDetailsDTO orderDto)
-        //{
-        //    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // Get logged-in user Id
-        //    Console.WriteLine("userid from order "+ userId);
-        //    if (string.IsNullOrEmpty(userId))
-        //    {
-        //        return BadRequest("User is not authenticated.");
-        //    }
-        //    var order = new OrderDetails
-        //    {
-        //        UserId = userId ,
-        //        Total = orderDto.Total
-        //    };
-
-        //    _context.OrderDetails.Add(order);
-        //    await _context.SaveChangesAsync();
-
-        //    return Ok(order);
-        //}
-
-
-       
+      
 
         [HttpPost]
         public async Task<IActionResult> CreateOrder([FromBody] OrderDetails orderDetails)
@@ -222,13 +113,7 @@ namespace AngularApi.Controllers
             _context.OrderDetails.Add(orderDetails);
             await _context.SaveChangesAsync();
 
-            //var delivery = await _context.Delivery.FirstOrDefaultAsync(d => d.OrderId == orderDetails.Id);
-
-            // if (delivery != null)
-            // {
-            //     delivery.OrderId = orderDetails.Id;
-            //     await _context.SaveChangesAsync();
-            // }
+            
 
             var delivery = new Delivery
             {
