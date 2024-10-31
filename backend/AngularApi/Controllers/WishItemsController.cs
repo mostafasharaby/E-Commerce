@@ -151,7 +151,7 @@ namespace AngularApi.Controllers
                 return BadRequest("User is not authenticated.");
             }
 
-            // Set the creation time and user ID for the wishlist
+            
             wishItems.CreatedAt = DateTime.Now;
             wishItems.UserId = userId;
 
