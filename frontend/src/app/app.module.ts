@@ -3,7 +3,6 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './compontents/Layout/Header/Header.component';
-import { ContentComponent } from './compontents/Layout/Content/Content.component';
 import { FooterComponent } from './compontents/Layout/Footer/Footer.component';
 import { NavbarComponent } from './compontents/Layout/Navbar/Navbar.component';
 import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
@@ -28,8 +27,7 @@ import { NotFoundPageComponent } from './compontents/Page/NotFoundPage/NotFoundP
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    ContentComponent,
+    HeaderComponent,   
     FooterComponent,
     NavbarComponent,
     HomeComponent,

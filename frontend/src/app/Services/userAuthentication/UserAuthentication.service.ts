@@ -2,14 +2,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, Observable, throwError } from 'rxjs';
 import { tap } from 'rxjs';
-import { jwtDecode } from 'jwt-decode'; 
+import { jwtDecode } from 'jwt-decode';
 import { environment } from '../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class UserAuthenticationService {
   private isLoggedSubject: BehaviorSubject<boolean>;
-  public getName: string = "";
   constructor(private http: HttpClient) {
     this.isLoggedSubject = new BehaviorSubject<boolean>(this.isUserLoggedIn);
   }
@@ -74,7 +73,7 @@ export class UserAuthenticationService {
 
 
   isAdmin(): boolean {
-    const token = localStorage.getItem('token'); 
+    const token = localStorage.getItem('token');
     if (token) {
       const decodedToken = jwtDecode(token) as any;
       //console.log("decodedToken ", JSON.stringify(decodedToken));
@@ -83,20 +82,20 @@ export class UserAuthenticationService {
     return false;
   }
 
-   getUsernameFromToken(): string | null {
+  getUsernameFromToken(): string | null {
     const token = localStorage.getItem('token');
     if (token) {
       const decodedToken = jwtDecode(token) as any;
-      return decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']; 
+      return decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'];
     }
     return null;
   }
-  
+
   public getHeaders(): HttpHeaders {
     const token = localStorage.getItem('token');
     return new HttpHeaders({
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`  
+      Authorization: `Bearer ${token}`
     });
   }
 

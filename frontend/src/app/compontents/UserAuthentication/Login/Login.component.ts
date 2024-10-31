@@ -51,24 +51,13 @@ export class LoginComponent implements OnInit {
     this.snackBar.showSnakeBar('Login Failed');
   }
 
-
-  // onSubmit() {
-  //   if (this.loginForm.valid) {
-  //     this.authService.login(this.loginForm.value.userName, this.loginForm.value.password);
-  //     console.log("login val : " + this.loginForm.value);
-  //     this.authService.getName = this.loginForm.get("email")?.value;
-  //     this.onLoginSuccess();
-  //     this.router.navigate(['Home']);
-  //   }
-  // }
   errorMessage: string | null = null; 
   onSubmit() {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
       //console.log("login val : " + this.loginForm.value);
       this.authService.login(email, password).subscribe(
-        (response: any) => {
-          //this.authService.getName = email;
+        (response: any) => {          
           this.onLoginSuccess();
           if (this.authService.isAdmin()) {
             this.router.navigate(['admin/dashboard']);  
