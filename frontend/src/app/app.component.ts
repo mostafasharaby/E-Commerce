@@ -13,7 +13,7 @@ export class AppComponent {
   constructor(private router: Router) {}
   ngOnInit(): void { 
     this.router.events.subscribe(() => {
-      this.showHeaderAndNavbar = !this.router.url.includes('/admin') && !this.router.url.includes('/error') && !this.router.url.includes('/auth');
+      this.showHeaderAndNavbar = !this.router.url.includes('/admin') && !this.router.url.includes('/error') //&& !this.router.url.includes('/auth');
     });
   
   }

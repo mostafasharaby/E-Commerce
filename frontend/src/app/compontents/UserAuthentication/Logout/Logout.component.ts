@@ -26,10 +26,10 @@ export class LogoutComponent implements OnInit {
 
   
   ngOnInit() {
-    const modalElement = document.getElementById('logoutModal');
-    if (modalElement) {
-      this.logoutModal = new Modal(modalElement);
-    }
+    // const modalElement = document.getElementById('logoutModal');
+    // if (modalElement) {
+    //   this.logoutModal = new Modal(modalElement);
+    // }
   }
 
 }

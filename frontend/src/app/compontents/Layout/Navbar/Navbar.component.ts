@@ -66,13 +66,13 @@ export class NavbarComponent implements OnInit {
     this.isMenu = false;
   }
 
-  onCategoryChange(event: any) {
-    this.selectedCategoryId = +event.target.value;  // Get the selected category ID
-    console.log("Selected Category ID: " + this.selectedCategoryId);
+  // onCategoryChange(event: any) {
+  //   this.selectedCategoryId = +event.target.value;  // Get the selected category ID
+  //   console.log("Selected Category ID: " + this.selectedCategoryId);
 
-    // Update the selected category in the shared service
-    this.service.changeCategoryId(this.selectedCategoryId);
-  }
+  //   // Update the selected category in the shared service
+  //   this.service.changeCategoryId(this.selectedCategoryId);
+  // }
 
 
   search(event: any) {

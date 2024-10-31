@@ -24,6 +24,7 @@ import { UserModule } from './UserModule/User.module';
 import { ProductModuleModule } from './ProductModule/ProductModule.module';
 import { MainLayoutComponent } from './compontents/Layout/MainLayout/MainLayout.component';
 import { NotFoundPageComponent } from './compontents/Page/NotFoundPage/NotFoundPage.component';
+import { AuthenticationModuleModule } from './AuthenticationModule/AuthenticationModule.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +42,7 @@ import { NotFoundPageComponent } from './compontents/Page/NotFoundPage/NotFoundP
     CommonModule ,
     AdminModule,
     UserModule,
+    AuthenticationModuleModule,
     ProductModuleModule,
     AppRoutingModule,
     FontAwesomeModule,

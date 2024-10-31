@@ -18,7 +18,8 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    
   ],
   declarations: [
     LoginComponent,
