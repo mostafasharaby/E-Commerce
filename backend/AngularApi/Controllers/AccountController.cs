@@ -69,7 +69,7 @@ namespace AngularApi.Controllers
                         //  Create the claims which will be included in the JWT token.                        
                         var claim = new List<Claim>
                         {
-                            new Claim(ClaimTypes.NameIdentifier, found.Id), // User's ID
+                            new Claim(ClaimTypes.NameIdentifier, found.Id), // User's ID , Found is very important
                             new Claim(ClaimTypes.Email, found.Email),
                             new Claim(ClaimTypes.Name, found.UserName),
                             new Claim(System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()) // Unique identifier for JWT
