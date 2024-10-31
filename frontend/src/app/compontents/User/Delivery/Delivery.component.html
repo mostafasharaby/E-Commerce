@@ -1,23 +1,22 @@
 <div class="space-y-4">
   <h2 class="text-xl font-semibold text-gray-900">Delivery Details</h2>
 
-  <form [formGroup]="checkoutForm"  >
+  <form [formGroup]="checkoutForm">
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-     
+
       <div>
         <label for="recipientName" class="mb-2 block text-sm font-medium text-gray-900">Your name</label>
         <input type="text" id="recipientName" formControlName="recipientName"
-          class="block w-full rounded-lg border p-2.5 text-sm bg-gray-50"
-          placeholder="Bonnie Green" required />
+          class="block w-full rounded-lg border p-2.5 text-sm bg-gray-50" placeholder="Bonnie Green" required />
         <div *ngIf="recipientName?.invalid && recipientName?.touched">
           <small *ngIf="recipientName?.errors?.['required']" class="text-red-500">Your name is required.</small>
         </div>
-      </div>      
+      </div>
 
-   
+
       <div>
         <label for="email" class="mb-2 block text-sm font-medium text-gray-900">Your email*</label>
-        <input type="email" id="email" formControlName="email" 
+        <input type="email" id="email" formControlName="email"
           class="block w-full rounded-lg border p-2.5 text-sm bg-gray-50"
           [ngClass]="{'border-red-500': email?.touched && email?.invalid, 'border-gray-300': !email?.touched || email?.valid}"
           placeholder="name@gmail.com" />
@@ -27,14 +26,13 @@
         </div>
       </div>
 
-     
+
       <div>
         <label for="country" class="mb-2 block text-sm font-medium text-gray-900">Country*</label>
-        <select id="country" formControlName="country"
-          class="block w-full rounded-lg border p-2.5 text-sm bg-gray-50"
+        <select id="country" formControlName="country" class="block w-full rounded-lg border p-2.5 text-sm bg-gray-50"
           [ngClass]="{'border-red-500': country?.touched && country?.invalid, 'border-gray-300': !country?.touched || country?.valid}">
           <option value="" disabled>Select Country</option>
-          <option value="US">United States</option>
+          <option value="US">Egypt</option>
           <option value="AS">Australia</option>
           <option value="FR">France</option>
           <option value="ES">Spain</option>
@@ -45,14 +43,13 @@
         </div>
       </div>
 
-    
+
       <div>
         <label for="city" class="mb-2 block text-sm font-medium text-gray-900">City*</label>
-        <select id="city" formControlName="city"
-          class="block w-full rounded-lg border p-2.5 text-sm bg-gray-50"
+        <select id="city" formControlName="city" class="block w-full rounded-lg border p-2.5 text-sm bg-gray-50"
           [ngClass]="{'border-red-500': city?.touched && city?.invalid, 'border-gray-300': !city?.touched || city?.valid}">
           <option value="" disabled>Select City</option>
-          <option value="San Francisco">San Francisco</option>
+          <option value="San Francisco">Cairo</option>
           <option value="NY">New York</option>
           <option value="LA">Los Angeles</option>
           <option value="CH">Chicago</option>
@@ -63,7 +60,7 @@
         </div>
       </div>
 
-  
+
       <div>
         <label for="phoneNumber" class="mb-2 block text-sm font-medium text-gray-900">Phone Number*</label>
         <input type="text" id="phoneNumber" formControlName="phoneNumber"
@@ -72,11 +69,10 @@
           placeholder="123-456-7890" />
         <div *ngIf="phoneNumber?.invalid && phoneNumber?.touched">
           <small *ngIf="phoneNumber?.errors?.['required']" class="text-red-500">Phone number is required.</small>
-          <small *ngIf="phoneNumber?.errors?.['pattern']" class="text-red-500">Phone number format: 123-456-7890.</small>
+          <small *ngIf="phoneNumber?.errors?.['pattern']" class="text-red-500">Phone number format:
+            123-456-7890.</small>
         </div>
       </div>
     </div>
-    
-    <!-- <button type="submit" class="mt-4 bg-blue-500 text-white p-2 rounded" [disabled]="checkoutForm.invalid">Submit</button> -->
   </form>
 </div>

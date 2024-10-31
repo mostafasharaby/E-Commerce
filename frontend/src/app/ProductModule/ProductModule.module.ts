@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductDetailsComponent } from '../compontents/User/ProductDetails/ProductDetails.component';
 import { ProductcardsComponent } from '../compontents/User/Productcards/Productcards.component';
-import { ProductlistComponent } from '../compontents/User/Productlist/Productlist.component';
 import { RouterModule, Routes } from '@angular/router';
 import { CartComponent } from '../compontents/User/Cart/Cart.component';
 import { CheckoutComponent } from '../compontents/User/Checkout/Checkout.component';
@@ -15,9 +14,7 @@ import { FinishPaymentComponent } from '../compontents/User/FinishPayment/Finish
 import { PaymentComponent } from '../compontents/User/Payment/Payment.component';
 import { DeliveryComponent } from '../compontents/User/Delivery/Delivery.component';
 
-const routes: Routes = [  
-
- // {path:'productList', component: ProductlistComponent},  
+const routes: Routes = [    
   {path:'productCards', component: ProductcardsComponent},
   {path:'productDetails/:productId', component: ProductDetailsComponent},
   {path:'Cart', component: CartComponent},
@@ -39,8 +36,7 @@ const routes: Routes = [
   ],
   declarations: [
     ProductDetailsComponent,
-    ProductcardsComponent,
-   // ProductlistComponent,
+    ProductcardsComponent,  
     CartComponent,
     CheckoutComponent,
     FinishPaymentComponent,

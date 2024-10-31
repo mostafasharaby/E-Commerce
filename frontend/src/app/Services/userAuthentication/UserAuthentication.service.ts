@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, Observable, throwError } from 'rxjs';
 import { tap } from 'rxjs';
@@ -74,7 +74,7 @@ export class UserAuthenticationService {
 
 
   isAdmin(): boolean {
-    const token = localStorage.getItem('token'); // Assuming you're storing the JWT in local storage
+    const token = localStorage.getItem('token'); 
     if (token) {
       const decodedToken = jwtDecode(token) as any;
       //console.log("decodedToken ", JSON.stringify(decodedToken));
@@ -87,10 +87,17 @@ export class UserAuthenticationService {
     const token = localStorage.getItem('token');
     if (token) {
       const decodedToken = jwtDecode(token) as any;
-      return decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']; // Change this to the appropriate claim
+      return decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']; 
     }
     return null;
   }
-
+  
+  public getHeaders(): HttpHeaders {
+    const token = localStorage.getItem('token');
+    return new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`  
+    });
+  }
 
 }

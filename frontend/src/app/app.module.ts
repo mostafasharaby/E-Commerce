@@ -14,7 +14,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-//import { StudentComponent } from './compontents/TestSignalR/Student/Student.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -37,7 +36,6 @@ import { NotFoundPageComponent } from './compontents/Page/NotFoundPage/NotFoundP
     MainLayoutComponent,
     NotFoundPageComponent
     
-   // StudentComponent
     
   ],
   imports: [

@@ -4,13 +4,14 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { IPaymentDetails } from '../../Models/IProduct';
 import { environment } from '../../../environments/environment';
+import { HandelErrorsService } from '../HandllingError/HandelErrors.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PaymentService {
   private apiUrl =    `${environment.api}/PaymentDetails`;    
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient , private handelErrorsService :HandelErrorsService) {}
 
   postPaymentDetails(payment: IPaymentDetails): Observable<IPaymentDetails> {
     const token = localStorage.getItem('token');
@@ -21,18 +22,7 @@ export class PaymentService {
 
     return this.http
       .post<IPaymentDetails>(this.apiUrl, payment, { headers })
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(this.handelErrorsService.handleError));
   }
-
-  private handleError(error: any) {
-    let errorMessage = '';
-    if (error.error instanceof ErrorEvent) {
-      // Client-side error
-      errorMessage = `Error: ${error.error.message}`;
-    } else {
-      // Server-side error
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-    }
-    return throwError(() => new Error('Something went wrong; please try again later.'));
-  }
+  
 }
