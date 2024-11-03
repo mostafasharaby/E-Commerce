@@ -33,9 +33,7 @@ import { AuthenticationModuleModule } from './AuthenticationModule/Authenticatio
     NavbarComponent,
     HomeComponent,
     MainLayoutComponent,
-    NotFoundPageComponent
-    
-    
+    NotFoundPageComponent        
   ],
   imports: [
     BrowserModule,

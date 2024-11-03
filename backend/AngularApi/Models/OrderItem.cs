@@ -8,8 +8,6 @@
         public int? Quantity { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? ModifiedAt { get; set; }
-
-        // Navigation properties
         public OrderDetails? Order { get; set; }
         public Product? Product { get; set; }
     }

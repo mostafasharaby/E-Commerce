@@ -10,8 +10,7 @@ namespace AngularApi.Models
         public string? Status { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? ModifiedAt { get; set; }
-
-        // Navigation property
+        
         [JsonIgnore]
         public OrderDetails? Order { get; set; }
     }

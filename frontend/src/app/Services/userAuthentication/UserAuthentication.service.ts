@@ -53,8 +53,8 @@ export class UserAuthenticationService {
   }
 
   logout() {
-    localStorage.removeItem('token');
     this.isLoggedSubject.next(false);
+    localStorage.removeItem('token');     
   }
 
   getUser(): Observable<any> {

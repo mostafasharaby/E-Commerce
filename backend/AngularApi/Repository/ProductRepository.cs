@@ -76,7 +76,7 @@ namespace angularapi.repository
         public  IEnumerable<ProductWithRatingDTO> GetProductsWithRatingsAsync()
         {
             return  context.Products
-                .Include(p => p.Ratings) // Eager loading of Ratings
+                .Include(p => p.Ratings) 
                 .Select(p => new ProductWithRatingDTO
                 {
                     id = p.ProductId,
@@ -128,7 +128,7 @@ namespace angularapi.repository
         public List<ProductWithRatingDTO2> GetProductsWithRatings2(string title)
         {
             return context.Products
-                .Include(p => p.Ratings) // Eager load Ratings
+                .Include(p => p.Ratings) 
                 .Where(p => p.Title == title)
                 .Select(p => new ProductWithRatingDTO2
                 {
@@ -146,8 +146,7 @@ namespace angularapi.repository
                     PrevPrice = p.PrevPrice,
                     Discount = p.Discount,
                     TotalPrice = p.TotalPrice,
-
-                    // Map the Ratings
+                    
                     Ratings = p.Ratings != null
                             ? new RatingsDTO
                             {

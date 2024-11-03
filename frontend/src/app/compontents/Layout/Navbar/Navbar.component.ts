@@ -49,9 +49,11 @@ export class NavbarComponent implements OnInit {
   }
 
   confirmLogout(): void {
-    console.log('Logging out...');
-    this.authService.logout();
-    this.router.navigate(['/auth/Login']);
+    console.log('Logging out...');    
+    this.authService.logout();     
+    this.router.navigate(['/auth/Login']).then(() => {
+      window.location.reload();
+    });
   }
 
   cancelLogout(): void {
@@ -89,9 +91,7 @@ export class NavbarComponent implements OnInit {
     this.authService.getloggedStatus().subscribe(status => {
       this.isLoggedIn = status;
     });
-
   }
-
 
 
   Rotate() {

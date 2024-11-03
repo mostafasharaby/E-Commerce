@@ -74,9 +74,9 @@ namespace WebApiDemo
                 op.TokenValidationParameters = new TokenValidationParameters()
                 {
                     ValidateIssuer = true,
-                    ValidIssuer = builder.Configuration["Jwt:ValidIssuer"], // Use PascalCase
+                    ValidIssuer = builder.Configuration["Jwt:ValidIssuer"], 
                     ValidateAudience = true,
-                    ValidAudience = builder.Configuration["Jwt:ValidAudience"], // Use PascalCase
+                    ValidAudience = builder.Configuration["Jwt:ValidAudience"], 
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Secret"])) // Corrected spelling
                 };
             });

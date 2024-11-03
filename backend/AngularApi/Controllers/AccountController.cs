@@ -49,30 +49,29 @@ namespace AngularApi.Controllers
             return BadRequest(ModelState);
         }
 
-        // check account validation  
+       
         [HttpPost("login")]
         public async Task<IActionResult> Login(LogInUserDTO logInUser)
         {
             if (ModelState.IsValid)
-            {
-                // Create token 
+            {               
                 var found = await userManager.FindByEmailAsync(logInUser.Email);
                 if (found != null)
                 {
                     User appUser = new User();
                     appUser.Email = logInUser.Email;
 
-                    //appUser.PasswordHash = logInUser.Password;
+                 
                     var checkpass = await userManager.CheckPasswordAsync(found, logInUser.Password);
                     if (checkpass)
                     {
-                        //  Create the claims which will be included in the JWT token.                        
+                                          
                         var claim = new List<Claim>
                         {
-                            new Claim(ClaimTypes.NameIdentifier, found.Id), // User's ID , Found is very important
+                            new Claim(ClaimTypes.NameIdentifier, found.Id), 
                             new Claim(ClaimTypes.Email, found.Email),
                             new Claim(ClaimTypes.Name, found.UserName),
-                            new Claim(System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()) // Unique identifier for JWT
+                            new Claim(System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()) 
                         };
                         Console.WriteLine("UserId "+ found.Id);
 
@@ -81,7 +80,7 @@ namespace AngularApi.Controllers
 
 
                         var role = await userManager.GetRolesAsync(appUser);
-                        foreach (var r in role)  // Add a claim for each role the user belongs to.
+                        foreach (var r in role)  
                         {
                             claim.Add(new Claim(ClaimTypes.Role, r));
                         }
@@ -97,14 +96,14 @@ namespace AngularApi.Controllers
                         }
 
 
-                        // // Create the security key from the secret stored in configuration.
+                       
                         SecurityKey securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Secret"]));
                         SigningCredentials signing = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
                         // Create the token
                         JwtSecurityToken jwtSecurity = new JwtSecurityToken(
-                            issuer: Configuration["Jwt:validissuer"], //  The token issuer (your API).
-                            audience: Configuration["Jwt:validaudience"],  // The token audience (typically the frontend app consuming the API).
+                            issuer: Configuration["Jwt:validissuer"],
+                            audience: Configuration["Jwt:validaudience"],  
                             claims: claim,
                             expires: DateTime.Now.AddHours(1),
                             signingCredentials: signing

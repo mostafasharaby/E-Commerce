@@ -51,9 +51,9 @@ namespace AngularApi.Controllers
             Console.WriteLine("userId ", userId);
             var wishListProduct = await _context.WishListProducts
                                                 .Where(w => w.UserId == userId && w.Id == id )
-                                                .Include(w => w.Product) // Eagerly load the Product
+                                                .Include(w => w.Product) 
                                                 .ThenInclude(p => p.Ratings)
-                                                .FirstOrDefaultAsync(w => w.Id == id); // Fetch by ID
+                                                .FirstOrDefaultAsync(w => w.Id == id); 
 
             if (wishListProduct == null)
             {

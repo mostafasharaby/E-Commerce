@@ -3,10 +3,10 @@
     public class ProductImage
     {
         public int ProductImageID { get; set; } 
-        public int ProductID { get; set; } // Foreign Key
+        public int ProductID { get; set; } 
 
-        public string? ImageUrl { get; set; } // Image URL
+        public string? ImageUrl { get; set; } 
   
-        public Product? Product { get; set; } // Reference to the Product
+        public Product? Product { get; set; } 
     }
 }

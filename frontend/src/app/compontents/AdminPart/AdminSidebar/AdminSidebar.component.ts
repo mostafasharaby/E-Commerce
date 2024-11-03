@@ -27,7 +27,9 @@ export class AdminSidebarComponent implements OnInit {
   confirmLogout(): void {
     console.log('Logging out...');
     this.authService.logout();
-    this.router.navigate(['/auth/Login']);
+    this.router.navigate(['/auth/Login']).then(() => {
+      window.location.reload();
+    });
   }
 
   cancelLogout(): void {

@@ -8,7 +8,7 @@
         public DateTime CreatedAt { get; set; }
         public DateTime? ModifiedAt { get; set; }
 
-        // Navigation properties
+      
         public User? User { get; set; }
         public ICollection<CartItem>? CartItems { get; set; }
     }
