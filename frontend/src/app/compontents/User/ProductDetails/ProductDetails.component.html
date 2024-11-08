@@ -30,7 +30,7 @@
         </div>
         <div class="flex items-center mb-2">
           <div class="flex items-center space-x-1 rtl:space-x-reverse">
-            <ng-container *ngFor="let star of [].constructor(getFilledStars(product.ratings.rate)); let i = index">
+            <ng-container *ngFor="let star of [].constructor(getFilledStars(product.ratings.rate||0)); let i = index">
               <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor" viewBox="0 0 22 20">
                 <path
@@ -38,7 +38,7 @@
               </svg>
             </ng-container>
 
-            <ng-container *ngFor="let star of [].constructor(getEmptyStars(product.ratings.rate)); let i = index">
+            <ng-container *ngFor="let star of [].constructor(getEmptyStars(product.ratings.rate||0)); let i = index">
               <svg class="w-4 h-4 text-gray-200 dark:text-gray-600" aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
                 <path

@@ -1,17 +1,18 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { ProductcardsComponent } from './Productcards.component';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 describe('ProductcardsComponent', () => {
   let component: ProductcardsComponent;
   let fixture: ComponentFixture<ProductcardsComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ProductcardsComponent ]
+  beforeEach((async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ ProductcardsComponent ],
+      imports: [HttpClientTestingModule]
     })
     .compileComponents();
   }));

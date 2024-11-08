@@ -1,12 +1,13 @@
 /* tslint:disable:no-unused-variable */
 
-import { TestBed, async, inject } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
 import { CartService } from './Cart.service';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 describe('Service: Cart', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [CartService]
+      providers: [CartService],
+      imports: [HttpClientTestingModule]
     });
   });
 

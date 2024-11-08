@@ -14,11 +14,11 @@ import { SnakebarService } from '../../../Services/SnakeBar/Snakebar.service';
 })
 export class ProductDetailsComponent implements OnInit {
   productId: number = 0;
-  prolist: IProduct | null = null;
-  product!: IProduct;
-  @Input() quantity: number = 1;
-  prodId: number = 0;
-  productIds: number[] = [];
+  //prolist: IProduct | null = null;
+  product : any = {};
+  //@Input() quantity: number = 1;
+  //prodId: number = 0;
+  //productIds: number[] = [];
   private paramMapSubscription?: Subscription;
   checkItemsInWishList: { [key: string]: boolean } = {};
 
@@ -39,13 +39,12 @@ export class ProductDetailsComponent implements OnInit {
 
     this.proService.getProductById(this.productId).subscribe(item => {
       this.product = item;
-      //console.log("details " + JSON.stringify(item, null, 2));
+      console.log("details " + JSON.stringify(item, null, 2));
     },(error) => {      
         console.error('Error fetching product:', error);
       });
   }
 
-  
 
 
   addToWishList(product: IProduct) {

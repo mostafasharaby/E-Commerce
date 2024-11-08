@@ -124,7 +124,7 @@ export class WishlistComponent implements OnInit {
   }
 
   getEmptyStars(rate: number): number {
-    return 6 - Math.ceil(rate);
+    return 5 - Math.ceil(rate);
   }
 
 }

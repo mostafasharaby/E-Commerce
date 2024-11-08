@@ -27,8 +27,8 @@ export class ProductsService {
     return this.http.get<any>(url);
   }
 
-  getProductById(prodID: number): Observable<IProduct> {
-    return this.http.get<IProduct>(`${this.detailsUrl}/${prodID}`); // Fetch single product by ID
+  getProductById(prodID: number): Observable<any> {
+    return this.http.get<any>(`${this.detailsUrl}/${prodID}`); // Fetch single product by ID
   }
 
 

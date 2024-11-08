@@ -1,17 +1,19 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
+import {  ComponentFixture, TestBed } from '@angular/core/testing';
 import { DeliveryComponent } from './Delivery.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('DeliveryComponent', () => {
   let component: DeliveryComponent;
   let fixture: ComponentFixture<DeliveryComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ DeliveryComponent ]
+  beforeEach((async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ DeliveryComponent ],
+      imports: [ HttpClientTestingModule, RouterTestingModule],
+      providers: [FormBuilder]
     })
     .compileComponents();
   }));

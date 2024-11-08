@@ -113,3 +113,18 @@
   transform: scale(1.1); /* Slightly increases the size on hover */
   transition: transform 0.2s ease-in-out; /* Smooth transition */
 }
+
+
+.no-products-image {
+  width: 150;
+}
+
+.no-products-section .text-muted {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.no-products-section p {
+  font-size: 1rem;
+  color: #6c757d;
+}

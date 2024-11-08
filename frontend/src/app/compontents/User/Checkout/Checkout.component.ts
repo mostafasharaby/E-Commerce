@@ -19,8 +19,7 @@ export class CheckoutComponent implements OnInit {
   private subscriptions: Subscription[] = [];
   orderDetails: IOrderDetails = {
     total: 0,
-    paymentId: 2,
-    modifiedAt: new Date().toISOString(),
+    paymentId: 2,   // initial , will be changed later     
   };
 
   constructor(
@@ -33,6 +32,7 @@ export class CheckoutComponent implements OnInit {
   ) { }
 
   checkoutForm!: FormGroup;
+  
   ngOnInit(): void {
     const totalSubscription =  this.totalService.sendtot$.subscribe((total) => {
       this.gettotal = total;

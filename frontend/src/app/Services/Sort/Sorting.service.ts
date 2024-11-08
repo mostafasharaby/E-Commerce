@@ -49,9 +49,9 @@ export class SortingService {
 
   sortByRate(products: IProduct[], order: string): IProduct[] {
     if (order === 'asc') {
-      return products.sort((a, b) => a.ratings.rate- b.ratings.rate);
+      return products.sort((a, b) => a.ratings.rate!- b.ratings.rate!);
     } else if (order === 'desc') {
-      return products.sort((a, b) => b.ratings.rate- a.ratings.rate);
+      return products.sort((a, b) => b.ratings.rate!- a.ratings.rate!);
     } else {
       return products; 
     }

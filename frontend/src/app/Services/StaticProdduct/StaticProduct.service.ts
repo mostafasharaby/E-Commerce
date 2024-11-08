@@ -58,7 +58,7 @@ export class StaticProductService  {
       discount: product.discount || 0, // Default to 0 if undefined
       totalprice: product.totalprice || 0, // Default to 0 if undefined
       ratings: {
-        rate: product.ratings.rate,
+        rate: product.ratings.rate || 0,
         count: product.ratings.count || 0 // Default to 0 if undefined
       }
     };

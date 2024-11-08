@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
   }
 
   onLoginSuccess() {
-    this.snackBar.showSnakeBar(`Welcome ${this.authService.getUsernameFromToken()}`);
+    this.snackBar.showSnakeBar(`Welcome ${this.authService.getUsernameFromToken()?.toUpperCase()}`);
   }
   onLoginFailed() {
     this.snackBar.showSnakeBar('Login Failed');

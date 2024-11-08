@@ -1,12 +1,13 @@
 /* tslint:disable:no-unused-variable */
 
-import { TestBed, async, inject } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
 import { SortingService } from './Sorting.service';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 describe('Service: Sorting', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [SortingService]
+      providers: [SortingService],
+      imports: [HttpClientTestingModule]
     });
   });
 

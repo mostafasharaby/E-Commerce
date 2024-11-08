@@ -27,6 +27,7 @@ const routes: Routes = [
       { path: 'product', component: AdminProductComponent },
       { path: 'customers', component: CustomersComponent },
       { path: 'AddProduct', component: AddProductComponent },
+      { path: 'AdminNav', component: AdminNavComponent },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' } 
     ]
   }

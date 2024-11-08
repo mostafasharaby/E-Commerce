@@ -25,7 +25,7 @@ const routes: Routes = [
   {path:'payment', component: PaymentComponent},
   {path:'completepayment', component: FinishPaymentComponent},
   {path:'category/:title', component: CategorylistComponent},
-  {path:'delivery', component: CategorylistComponent}
+  {path:'delivery', component: DeliveryComponent}
 ]
 @NgModule({
   imports: [
