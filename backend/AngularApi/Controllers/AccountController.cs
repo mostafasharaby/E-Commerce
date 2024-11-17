@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using System.Net;
 using System.Security.Claims;
 using System.Text;
 
@@ -105,7 +106,7 @@ namespace AngularApi.Controllers
                             issuer: Configuration["Jwt:validissuer"],
                             audience: Configuration["Jwt:validaudience"],  
                             claims: claim,
-                            expires: DateTime.Now.AddHours(1),
+                            expires: DateTime.Now.AddHours(2),
                             signingCredentials: signing
                             );
 
@@ -119,7 +120,64 @@ namespace AngularApi.Controllers
                 return Unauthorized();
             }
             return BadRequest(ModelState);
-        }      
+        }
+
+
+        [HttpPost("forgot-password")]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordDTO forgotPasswordDto)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await userManager.FindByEmailAsync(forgotPasswordDto.Email);
+                if (user == null)
+                {
+                    return Ok(new { message = "If an account with that email exists, a reset link has been sent." });
+                }
+
+                var resetToken = await userManager.GeneratePasswordResetTokenAsync(user);
+                var encodedToken = WebUtility.UrlEncode(resetToken);
+
+                var resetLink = Url.Action(
+                    "ResetPassword",
+                    "Account",
+                    new { token = encodedToken, email = user.Email },
+                    Request.Scheme);
+
+                Console.WriteLine($"Generated Reset Link: {resetLink}");
+                return Ok(new { resetLink });
+            }
+
+            return BadRequest(ModelState);
+        }
+
+        // "newPassword": "2228*88aAA"
+        [HttpPost("reset-password")]
+        public async Task<IActionResult> ResetPassword(ResetPasswordDTO resetPasswordDto)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await userManager.FindByEmailAsync(resetPasswordDto.Email);
+                if (user == null)
+                {
+                    return BadRequest(new { message = "Invalid request." });
+                }
+
+                var decodedToken = WebUtility.UrlDecode(resetPasswordDto.Token);
+                var result = await userManager.ResetPasswordAsync(user, decodedToken, resetPasswordDto.NewPassword);
+
+                if (result.Succeeded)
+                {
+                    return Ok(new { message = "Password has been reset successfully." });
+                }
+
+                Console.WriteLine($"Errors: {string.Join(", ", result.Errors.Select(e => e.Description))}");
+                return BadRequest(result.Errors.FirstOrDefault()?.Description);
+            }
+
+            return BadRequest(ModelState);
+        }
+
+
 
     }
 

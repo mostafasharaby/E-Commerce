@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 namespace AngularApi.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+    [ApiController()]
     public class UsersController : ControllerBase
     {
         private readonly UserManager<User> _userManager;

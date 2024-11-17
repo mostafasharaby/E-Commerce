@@ -9,7 +9,7 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 describe('AddProductComponent', () => {
   let component: AddProductComponent;
   let fixture: ComponentFixture<AddProductComponent>;
-
+  let fb: FormBuilder;
   beforeEach((async () => {
     await TestBed.configureTestingModule({
       declarations: [ AddProductComponent ],
@@ -17,6 +17,7 @@ describe('AddProductComponent', () => {
       providers: [FormBuilder]
     })
     .compileComponents();
+    fb = TestBed.inject(FormBuilder);
   }));
 
   beforeEach(() => {

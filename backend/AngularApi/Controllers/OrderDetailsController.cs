@@ -123,7 +123,7 @@ namespace AngularApi.Controllers
                 Email = orderDetails.Delivery?.Email,
                 Country = orderDetails.Delivery?.Country,
                 City = orderDetails.Delivery?.City,
-                PhoneNumber = orderDetails.Delivery?.PhoneNumber,
+                PhoneNumber = orderDetails.Delivery?.PhoneNumber,                
                 DeliveryCost = 10m
             };
 

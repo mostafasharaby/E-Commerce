@@ -55,8 +55,16 @@ namespace WebApiDemo
             });
 
             builder.Services.AddScoped<IProductRepository, Productrepository>();
-             
-            builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<AngularDbContext>();//.AddDefaultTokenProviders();
+
+            // builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<AngularDbContext>().AddDefaultTokenProviders();
+            builder.Services.AddIdentity<User, IdentityRole>(options =>
+            {
+                options.Tokens.PasswordResetTokenProvider = TokenOptions.DefaultProvider;
+            })
+             .AddEntityFrameworkStores<AngularDbContext>()
+             .AddDefaultTokenProviders();
+
+
             builder.Services.AddDbContext<AngularDbContext>(option =>
             {
                 option.UseSqlServer(builder.Configuration.GetConnectionString("connection"));

@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { NavbarComponent } from './Navbar.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
@@ -12,7 +13,7 @@ describe('NavbarComponent', () => {
   beforeEach((async () => {
     await TestBed.configureTestingModule({
       declarations: [ NavbarComponent ],
-      imports: [HttpClientTestingModule]
+      imports: [HttpClientTestingModule , RouterTestingModule]
     })
     .compileComponents();
   }));
