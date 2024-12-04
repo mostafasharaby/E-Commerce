@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Text;
 
@@ -142,6 +143,37 @@ namespace AngularApi.Controllers
                     "Account",
                     new { token = encodedToken, email = user.Email },
                     Request.Scheme);
+
+                try
+                {
+                    var smtpClient = new SmtpClient("smtp.example.com")
+                    {
+                        Port = 587,
+                        Credentials = new NetworkCredential("mustafasharaby18@gmail.com", "01200798407"),
+                        EnableSsl = true,
+                    };
+
+                    var mailMessage = new MailMessage
+                    {
+                        From = new MailAddress("mustafasharaby18@gmail.com"),
+                        Subject = "Password Reset",
+                        Body = $"Click the link to reset your password: {resetLink}",
+                        IsBodyHtml = true,
+                    };
+
+                    mailMessage.To.Add(user.Email);
+
+                    await smtpClient.SendMailAsync(mailMessage);
+
+                    // Log success (optional)
+                    Console.WriteLine($"Reset link sent to {user.Email}");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Failed to send email: {ex.Message}");
+                    return StatusCode(500, new { message = "Failed to send email. Please try again later." });
+                }
+
 
                 Console.WriteLine($"Generated Reset Link: {resetLink}");
                 return Ok(new { resetLink });

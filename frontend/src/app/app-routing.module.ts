@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './compontents/Page/Home/Home.component';
-import { NotFoundPageComponent } from './compontents/Page/NotFoundPage/NotFoundPage.component';
-import { AdminGuard } from './Gaurds/admin.guard';
+import { HomeComponent } from './user/pages/Home/Home.component';
+import { NotFoundPageComponent } from './user/pages/NotFoundPage/NotFoundPage.component';
+import { AdminGuard } from './admin/Gaurds/admin.guard';
 
 const routes: Routes = [
   {
@@ -13,19 +13,19 @@ const routes: Routes = [
   },
   {
     path: 'admin', canActivate: [AdminGuard],
-    loadChildren: () => import('./adminModule/AdminModule.module').then(m => m.AdminModule)
+    loadChildren: () => import('./admin/AdminModule/AdminModule.module').then(m => m.AdminModule)
   },
   {
     path: 'user',
-    loadChildren: () => import('./UserModule/User.module').then(m => m.UserModule)
+    loadChildren: () => import('./user/UserModule/User.module').then(m => m.UserModule)
   },
   {
     path: 'product',
-    loadChildren: () => import('./ProductModule/ProductModule.module').then(m => m.ProductModuleModule)
+    loadChildren: () => import('./user/pages/product/ProductModule/ProductModule.module').then(m => m.ProductModuleModule)
   },
   {
     path: 'auth',
-    loadChildren: () => import('./AuthenticationModule/AuthenticationModule.module').then(m => m.AuthenticationModuleModule)
+    loadChildren: () => import('./user/pages/auth/AuthenticationModule/AuthenticationModule.module').then(m => m.AuthenticationModuleModule)
   },
   {
     path: 'error', component: NotFoundPageComponent,
